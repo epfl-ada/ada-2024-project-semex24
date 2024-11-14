@@ -28,6 +28,8 @@ Our project examines how major historical events and seasonal patterns influence
 ## **Additional Datasets**
 Alongside *CMU Personas*, we incorporate the "Base de dato Servia" dataset to enrich our analysis with additional features such as popularity measures and revenue details, helping to reduce missing values and increase data reliability.
 
+!!!! Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible. !!!
+
 ## **Methods**
 
 1. **Data Collection & Cleaning**: We will use the *CMU Personas* dataset combined with the "Base de dato Servia" dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
