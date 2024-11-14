@@ -64,16 +64,17 @@ These methods will allow us to address the research questions by leveraging the 
 4. **Step 4: Historical Impact on Genre and Themes** 11.11.2024 - 14.11.2024
    - Conduct regression analysis to examine the impact of major historical events on genre shifts and theme changes.
 
-5. **Step 5: Revenue Analysis Over Time** 02.12.2023 - 06.12.2024
+5. **Step 5: Revenue Analysis Over Time**
+   02.12.2023 - 06.12.2024
    - Apply time series analysis to track revenue trends, identifying peak financial periods by season and historical event.
 
-6. **Step 6: Clustering for Genre and Country Patterns** 09.12.2023 - 13.12.2024
+7. **Step 6: Clustering for Genre and Country Patterns** 09.12.2023 - 13.12.2024
    - Implement clustering to uncover genre and regional preferences, examining how audience interests vary by country and season.
 
-7. **Step 7: Optional Sentiment Analysis** 09.12.2023 - 13.12.2024
+8. **Step 7: Optional Sentiment Analysis** 09.12.2023 - 13.12.2024
    - If time permits, analyze character descriptions and plot summaries for sentiment, providing a nuanced view of emotional tone.
 
-8. **Step 8: Final Reporting and Visualization** 16.12.2023 - 20.12.2024
+9. **Step 8: Final Reporting and Visualization** 16.12.2023 - 20.12.2024
    - Develop interactive visualizations, compile findings, and finalize the report, ensuring clear communication of results.
 
 ## **Organization Within the Team**
