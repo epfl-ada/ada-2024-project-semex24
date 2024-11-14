@@ -79,11 +79,11 @@ These methods will allow us to address the research questions by leveraging the 
 ## **Organization Within the Team**
 
 - **Step 1: Dataset Preparation and Cleaning**  
-   - *Team Members*: Daniela & Andrea  
+   - *Team Members*: Milica & Marija  
    - *Responsibilities*: Integrate and clean datasets, standardize formats, and address missing values in revenue.
 
 - **Step 2: Initial Data Exploration and Visualization**  
-   - *Team Members*: Maria & Eugenio  
+   - *Team Members*: Marija & Eugenio  
    - *Responsibilities*: Conduct EDA, create visualizations, and identify trends.
 
 - **Step 3: Seasonal Trends Analysis**  
@@ -91,7 +91,7 @@ These methods will allow us to address the research questions by leveraging the 
    - *Responsibilities*: Analyze genre popularity by season and document findings.
 
 - **Step 4: Historical Impact on Genre and Themes**  
-   - *Team Members*: Daniela & Maria  
+   - *Team Members*: Daniela & Marija  
    - *Responsibilities*: Perform regression analysis and explore genre shifts linked to historical events.
 
 - **Step 5: Revenue Analysis Over Time**  
@@ -103,11 +103,11 @@ These methods will allow us to address the research questions by leveraging the 
    - *Responsibilities*: Use clustering algorithms to analyze genre and country preferences.
 
 - **Step 7: Sentiment Analysis**  
-   - *Team Members*: Maria & Andrea  
+   - *Team Members*: Marija & Andrea  
    - *Responsibilities*: If time permits, conduct sentiment analysis on character descriptions and plot summaries.
 
 - **Step 8: Final Reporting and Visualization**  
-   - *Team Members*: Daniela & Milica  
+   - *Team Members*: Daniela, Andrea & Milica  
    - *Responsibilities*: Develop visualizations, compile a cohesive data story, and finalize the report.
 
 ## **Questions for TAs**  
