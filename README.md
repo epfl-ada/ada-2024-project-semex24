@@ -34,7 +34,7 @@ Alongside *CMU Personas*, we incorporate the "Base de dato Servia" dataset to en
 
 1. **Data Collection & Cleaning**: We will use the *CMU Personas* dataset combined with the "Base de dato Servia" dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
 
-2. **Exploratory Data Analysis (EDA)**: Conduct initial EDA to visualize genre distribution, character features, and popularity across historical periods and seasons. Using bar charts and time series, we’ll assess patterns and variations in popularity and revenue, setting the foundation for deeper analysis.
+2. **Exploratory Data Analysis (EDA)**: Conduct initial EDA to visualize genre distribution, and popularity across historical periods and seasons. Using bar charts and time series, we’ll assess patterns and variations in popularity and revenue, setting the foundation for deeper analysis.
 
 3. **Seasonal Trend Analysis**: We’ll apply statistical tests (e.g., chi-square, ANOVA) to examine genre popularity by season, testing hypotheses on genre-season associations such as horror’s peak in October and family movies’ rise in December.
 
