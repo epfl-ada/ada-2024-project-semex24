@@ -61,15 +61,6 @@ def plot_popular_languages(movies_df):
     plt.xticks(rotation=45)
     plt.show()
 
-# Function to plot the distribution of movie budgets
-def plot_budget_distribution(movies_df):
-    plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['budget'], bins=30, kde=True)
-    plt.title('Distribution of Movie Budgets')
-    plt.xlabel('budget')
-    plt.ylabel('Frequency')
-    plt.show()
-
 
 # Function to plot movie budgets in log scale 
 def plot_log_scale_budget_distribution(movies_df):
@@ -104,6 +95,7 @@ def plot_movies_over_years(movies_df):
 
 # Function to plot the top 10 most popular movie genres
 def plot_top_10_genres(movies_df):
+
     genre_counts = {}
 
     for genre_list in movies_df['genres'].dropna():
@@ -119,24 +111,20 @@ def plot_top_10_genres(movies_df):
     print("10 Most Popular Genres:")
     for genre, count in most_common_genres:
         print(f"{genre}: {count}")
+        
+    
     plt.figure(figsize=(10, 6))
     genres, counts = zip(*most_common_genres)
     sns.barplot(x=genres, y=counts)
     plt.title('Top 10 Most Popular Genres')
     plt.xlabel('Genre')
 
-# Function to plot the distribution of popularity scores
-def plot_popularity_distribution(movies_df):
-    plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['popularity'], bins=30, kde=True)
-    plt.title('Distribution of Movie popularity Scores')
-    plt.xlabel('popularity Score')
-    plt.ylabel('Frequency')
     
 
 def plot_popularity(movies_df):
+
     plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['popularity'], bins=30, kde=True)
+    sns.histplot(np.log1p(movies_df['popularity']), bins=30, kde=True)
     plt.title('Distribution of Movie popularity Scores')
-    plt.xlabel('popularity Score')
-    plt.ylabel('Frequency')
+    plt.xlabel('Log of popularity Score')
+    plt.xticks(ticks=np.log1p([1e1,1e2,1e3]), labels=[f'{int(x)}' for x in [1e1,1e2,1e3]]);
