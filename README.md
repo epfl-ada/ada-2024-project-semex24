@@ -52,7 +52,7 @@ ADA-2024-PROJECT-SEMEX24/
 
 Objective: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
 
-**OTHER QUESTION:**
+**OTHER QUESTIONS:**
 
 1. **How do major historical events shape the genres and themes of movies?**
    - **Objective**: Examine how significant historical events (e.g., wars, economic crises, political changes) influence shifts in dominant genres and narrative themes.
