@@ -40,13 +40,10 @@ ADA-2024-PROJECT-SEMEX24/
 │       ├── sentimental_analysis.py<- Sentiment analysis functions
 │       └── sesonal.py             <- Functions for seasonal analysis
 │
-├── tests/                         <- Tests of any kind (not yet populated)
-│
-├── results.ipynb                  <- A well-structured notebook for final results
-│
 ├── .gitignore                     <- List of files ignored by git
 ├── environment.yml                <- File for setting up the Python environment
-└── README.md                      <- Project README file
+├── README.md                      <- Project README file
+└── results.ipynb                  <- A well-structured notebook for final results
 ```
 
 ## **Research Questions**
