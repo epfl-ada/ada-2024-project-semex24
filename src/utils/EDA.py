@@ -5,12 +5,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+# Function of missing values
+
 def plot_missing_values(movies_df):
     plt.figure(figsize=(10, 6))
     sns.heatmap(movies_df.isnull(), cbar=False, cmap='viridis', yticklabels=False)
     plt.title('Missing value in the dataset')
     plt.show()
 
+#function of categories
 
 def number_categories(movies_df):
     all_genres = set()
@@ -23,9 +26,9 @@ def number_categories(movies_df):
     print("Number of genres:", len(all_genres_list))
     print(all_genres_list)
 
-# 1. Function to plot top movie-producing countries
+# Function to plot top movie-producing countries
 def plot_top_10_countries(movies_df):
-    country_counts = movies_df['countries'].explode().value_counts() #since we can have more than 1 country in countries column
+    country_counts = movies_df['countries'].explode().value_counts() 
     top_10_countries = country_counts.head(10)
 
     plt.figure(figsize=(10, 6))
@@ -36,7 +39,7 @@ def plot_top_10_countries(movies_df):
     plt.xticks(rotation=45)
     plt.show()
 
-# 2. Function to plot the most popular movie languages
+# Function to plot the most popular movie languages
 def plot_popular_languages(movies_df):
     
     movies_df['languages'] = movies_df['languages'].apply(
@@ -58,7 +61,7 @@ def plot_popular_languages(movies_df):
     plt.xticks(rotation=45)
     plt.show()
 
-# 3. Function to plot the distribution of movie budgets
+# Function to plot the distribution of movie budgets
 def plot_budget_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(movies_df['budget'], bins=30, kde=True)
@@ -68,7 +71,7 @@ def plot_budget_distribution(movies_df):
     plt.show()
 
 
-# 4. Function to plot movie budgets in log scale (handling zero budgets)
+# Function to plot movie budgets in log scale (handling zero budgets)
 def plot_log_scale_budget_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(np.log1p(movies_df['budget']), bins=30, kde=True)
@@ -79,7 +82,7 @@ def plot_log_scale_budget_distribution(movies_df):
     plt.show()
 
 
-# 6. Function to plot the distribution of movie revenues
+# Function to plot the distribution of movie revenues
 def plot_revenue_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(movies_df['revenue'], bins=50, kde=True)
@@ -88,9 +91,18 @@ def plot_revenue_distribution(movies_df):
     plt.ylabel('Frequency')
     plt.tight_layout()
     plt.show()
+# Function to plot the distribution of movie revenues log-scale
+
+def plot_revenue_log_distribution(movies_df): 
+    plt.figure(figsize=(15, 6))
+    sns.histplot(np.log1p(movies_df['revenue']), bins=30, kde=True)
+    plt.title('Distribution of Movie Revenues')
+    plt.xlabel('Log of revenue')
+    plt.ylabel('Frequency')
+    plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]]);
 
 
-# 7. Function to plot the distribution of movies over the years
+# Function to plot the distribution of movies over the years
 def plot_movies_over_years(movies_df):
     df_filtered = movies_df.dropna(subset=['release_year'])
 
@@ -101,7 +113,7 @@ def plot_movies_over_years(movies_df):
     plt.title('Distribution of Movie Release Years')
     plt.show()
 
-# 8. Function to plot the top 10 most popular movie genres
+# Function to plot the top 10 most popular movie genres
 def plot_top_10_genres(movies_df):
     genre_counts = {}
 
@@ -124,7 +136,7 @@ def plot_top_10_genres(movies_df):
     plt.title('Top 10 Most Popular Genres')
     plt.xlabel('Genre')
 
-# 9. Function to plot the distribution of popularity scores
+# Function to plot the distribution of popularity scores
 def plot_popularity_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(movies_df['popularity'], bins=30, kde=True)
