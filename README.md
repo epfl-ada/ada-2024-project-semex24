@@ -14,27 +14,26 @@ Our project explores how significant historical events and seasonal trends influ
 
 ## **Research Questions**
 
-1. **How do major historical events influence the themes and genres of movies?**
-   - Objective: Identify shifts in genre and thematic focus during significant historical periods, such as wars or economic recessions.
+1. **How have major historical events shaped the narratives and genres of movies over time?**
+   - Objective: Analyze changes in dominant genres and themes during key historical periods (e.g., wars, economic downturns, political shifts) to understand how cinema reflects societal challenges and aspirations.
 
-2. **Are there specific seasons where certain movie genres are more popular?**
-   - Objective: Examine seasonal trends to see if particular genres align with times of the year, such as horror in autumn or family films in winter.
+2. **What seasonal patterns exist in the popularity of specific movie genres, and how do they evolve over decades?**
+   - Objective: Investigate how seasonality impacts genre preferences (e.g., horror in fall, family films in winter) and assess if these trends have shifted over time, reflecting changes in cultural celebrations or viewing habits.
 
-3. **How do historical events and seasonal timing impact movie budgets?**
-   - Objective: Analyze if and how budgets vary across seasons and historical events, identifying trends in production investment.
+3. **How do historical periods and seasonal release strategies influence movie budgets?**
+   - Objective: Examine whether particular genres or historical periods are associated with higher production budgets, and if seasonal factors (e.g., summer blockbusters) impact the allocation of production resources.
 
-4. **What is the relationship between release season, historical context, and movie revenue?**
-   - Objective: Investigate how the timing of a movie’s release affects its financial success, considering both seasonal peaks and historical influences.
+4. **In what ways do release timing and historical context impact a movie’s box office revenue?**
+   - Objective: Assess the relationship between a movie’s release season, the historical period, and its revenue performance to identify optimal release strategies and understand how external factors influence financial success.
 
-5. **What are the predominant sentiments in plot summaries during historical events?**
-   - Objective: Explore the emotional tone in movie plots, examining how sentiment trends align with or respond to major historical events.
-
-6. **How has language diversity in movies changed in response to historical events and audience shifts over time?**
-   - Objective: Explore the variation in language representation within movies over different historical periods, reflecting cultural and societal changes.
+5. **How do the predominant sentiments in movie plot summaries align with major historical events?**
+   - Objective: Analyze the emotional tone in plot summaries during different historical events, exploring how sentiments in cinema reflect or respond to periods of social change, crisis, or celebration.
 
 ## **Additional Dataset**
 
 Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provides a comprehensive collection of 1 million movies with metadata such as titles, release dates, genres, revenue, and popularity scores. This dataset will complement CMU Personas by filling in missing values, particularly in revenue and popularity fields, enhancing the overall data quality. The integration of TMDB data allows us to standardize genres and dates across datasets, ensuring consistency. Additionally, the enriched features from TMDB will enable us to perform a more in-depth analysis of seasonal trends and historical impacts, offering a fuller picture of audience preferences over time.
+
+https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?resource=download 
 
 ## **Methods**
 
@@ -58,13 +57,13 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 ## **Proposed Timeline**
 
 1. **Step 1 (28.10.2024 - 01.11.2024)**: Integrate CMU and TMDB datasets, standardize formats, and address missing values.
-2. **Step 2 (04.11.2024 - 08.11.2024)**: Conduct EDA, create visualizations, and identify trends.
+2. **Step 2 (02.11.2024 - 08.11.2024)**: Conduct EDA, create visualizations, and identify trends.
 3. **Step 3 (11.11.2024 - 14.11.2024)**: Analyze seasonal genre trends using statistical methods.
 4. **Step 4 (11.11.2024 - 14.11.2024)**: Perform regression analysis on historical events' impact.
-5. **Step 5 (02.12.2023 - 06.12.2024)**: Apply time series analysis to revenue patterns.
-6. **Step 6 (09.12.2023 - 13.12.2024)**: Conduct clustering for genre and regional preferences.
-7. **Step 7 (09.12.2023 - 13.12.2024)**: Perform sentiment analysis on plot summaries.
-8. **Step 8 (16.12.2023 - 20.12.2024)**: Finalize visualizations, compile findings, and complete the report.
+5. **Step 5 (11.11.2024 - 01.12.2024)**: Apply time series analysis to revenue patterns.
+6. **Step 6 (11.11.2024 - 03.12.2024)**: Conduct clustering for genre and regional preferences.
+7. **Step 7 (14.11.2024 - 05.12.2024)**: Perform sentiment analysis on plot summaries.
+8. **Step 8 (16.11.2024 - 20.12.2024)**: Finalize visualizations, compile findings, and complete the report.
 
 ![Proposed Timeline](src/media/timeline_chart.png)
 
