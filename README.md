@@ -66,7 +66,7 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 7. **Step 7 (09.12.2023 - 13.12.2024)**: Perform sentiment analysis on plot summaries.
 8. **Step 8 (16.12.2023 - 20.12.2024)**: Finalize visualizations, compile findings, and complete the report.
 
-![Proposed Timeline](timeline_chart.png)
+![Proposed Timeline](src/media/timeline_chart.png)
 
 ## **Organization Within the Team**
 
