@@ -88,23 +88,23 @@ https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?r
 ## **Organization Within the Team**
 
 
-- **Step 1 (20.11.2024 - 22.11.2024)**:  Milica, Marija & Eugenio
+- **Step 1**:  Milica, Marija & Eugenio
 
-- **Step 2 (23.11.2024 - 26.11.2024)**: Marija, Andrea & Daniela
+- **Step 2**: Marija, Andrea & Daniela
 
-- **Step 3 (27.11.2024 - 29.11.2024)**:  Milica & Eugenio
+- **Step 3**:  Milica & Eugenio
 
-- **Step 4 (30.11.2024 - 02.12.2024)**:  Daniela & Andrea
+- **Step 4**:  Daniela & Andrea
 
-- **Step 5 (03.12.2024 - 06.12.2024)**: Marija & Milica
+- **Step 5**: Marija & Milica
 
-- **Step 6 (07.12.2024 - 09.12.2024)**:Eugenio & Andrea
+- **Step 6**:Eugenio & Andrea
 
-- **Step 7 (10.12.2024 - 12.12.2024)**: Daniela, Eugenio & Marija
+- **Step 7**: Daniela, Eugenio & Marija
 
-- **Step 8 (13.12.2024 - 15.12.2024)**:  Milica & Andrea
+- **Step 8**:  Milica & Andrea
 
-- **Step 9 (16.12.2024)**: Marija, Andrea & Daniela
+- **Step 9**: Marija, Andrea & Daniela
 
 ## **Questions for TAs**  
 - Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
