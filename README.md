@@ -48,7 +48,7 @@ ADA-2024-PROJECT-SEMEX24/
 
 ## **Research Questions**
 
-**Global question: How do societal eras, including historical periods and seasonal trends, shape the evolution of cinema?**
+**MAIN QUESTION: How do societal eras, including historical periods and seasonal trends, shape the evolution of cinema?**
 
 Objective: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
 
