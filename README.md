@@ -34,7 +34,7 @@ Our project examines how majoSr historical events and seasonal patterns influenc
    - **Objective**: Identify the best season for releasing different genres to maximize audience engagement and revenue.
    - **Hypothesis**: High-budget action films may perform best in summer, while dramas may find success during award season in the latter part of the year.
 
-## **Additional Datasets**
+## **Additional Dataset**
 
 Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provides a comprehensive collection of 1 million movies with metadata such as titles, release dates, genres, revenue, and popularity scores. This dataset will complement CMU Personas by filling in missing values, particularly in revenue and popularity fields, enhancing the overall data quality. The integration of TMDB data allows us to standardize genres and dates across datasets, ensuring consistency. Additionally, the enriched features from TMDB will enable us to perform a more in-depth analysis of seasonal trends and historical impacts, offering a fuller picture of audience preferences over time.
 
