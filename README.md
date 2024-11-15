@@ -5,8 +5,8 @@ Our project explores how significant historical events and seasonal trends influ
 
 ## **Table of Contents**
 1. [Project structure](#project-structure)
-2. [Research Questions](#research-questions)  
-3. [Additional Dataset](#Additional-Datasets)  
+2. [Research Questions](#research-questions)
+3. [Additional Dataset](#Additional-dataset)  
 4. [Methods](#methods)  
 5. [Proposed Timeline](#proposed-timeline)  
 6. [Organization Within the Team](#organization-within-the-team)  
@@ -48,9 +48,9 @@ ADA-2024-PROJECT-SEMEX24/
 
 ## **Research Questions**
 
-**MAIN QUESTION: How do societal eras, including historical periods and seasonal trends, shape the evolution of cinema?**
-
-Objective: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
+**MAIN QUESTION:** 
+**How do societal eras, including historical periods and seasonal trends, shape the evolution of cinema?**
+   Objective: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
 
 **OTHER QUESTIONS:**
 
