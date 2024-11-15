@@ -3,3 +3,23 @@ import pandas as pd
 def data_loader_movies(file_path):
     movies_df =  pd.read_csv(file_path, sep='\t')
     return movies_df
+
+
+def parse_genres(x):
+    if isinstance(x, str):
+        try:
+            return ast.literal_eval(x)
+        except (ValueError, SyntaxError):
+            return [genre.strip() for genre in x.split(',')]
+    return x
+
+
+def feature_engineering_movies(movies_df):
+    movies_df['release_date'] = pd.to_datetime(movies_df['release_date'], errors='coerce')
+    movies_df['release_year'] = movies_df['release_date'].dt.year
+    movie_count_by_year = movies_df['release_year'].value_counts().sort_index()
+    movies_df['genres'] = movies_df['genres'].apply(parse_genres)
+
+    # Converting to lists genre column, country and language column
+    movies_df['countries'] = movies_df['countries'].str.split(', ')
+    movies_df['languages'] = movies_df['languages'].str.split(', ')
