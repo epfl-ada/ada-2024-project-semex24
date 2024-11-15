@@ -71,16 +71,15 @@ def plot_budget_distribution(movies_df):
     plt.show()
 
 
-# Function to plot movie budgets in log scale (handling zero budgets)
+# Function to plot movie budgets in log scale 
 def plot_log_scale_budget_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(np.log1p(movies_df['budget']), bins=30, kde=True)
-    plt.title('Distribution of Movie Budgets')
+    plt.title('Distribution of Movie Vudgets')
     plt.xlabel('Log of budget')
     plt.ylabel('Frequency')
     plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]])
     plt.show()
-
 
 # Function to plot the distribution of movie revenues
 def plot_revenue_distribution(movies_df):
@@ -89,11 +88,10 @@ def plot_revenue_distribution(movies_df):
     plt.title('Distribution of Movie Revenues')
     plt.xlabel('Log of revenue')
     plt.ylabel('Frequency')
-    plt.tight_layout()
-    plt.show()
+    plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]]);
 
 
-# 7. Function to plot the distribution of movies over the years
+# Function to plot the distribution of movies over the years
 def plot_movies_over_years(movies_df):
     df_filtered = movies_df.dropna(subset=['release_year'])
 
