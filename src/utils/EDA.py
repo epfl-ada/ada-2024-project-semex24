@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-def plot_missing_values():
+def plot_missing_values(movies_df):
     plt.figure(figsize=(10, 6))
     sns.heatmap(movies_df.isnull(), cbar=False, cmap='viridis', yticklabels=False)
     plt.title('Missing value in the dataset')
