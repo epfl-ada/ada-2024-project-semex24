@@ -81,13 +81,12 @@ def plot_log_scale_budget_distribution(movies_df):
 
 # 6. Function to plot the distribution of movie revenues
 def plot_revenue_distribution(movies_df):
-    plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['revenue'], bins=50, kde=True)
+    plt.figure(figsize=(15, 6))
+    sns.histplot(np.log1p(movies_df['revenue']), bins=30, kde=True)
     plt.title('Distribution of Movie Revenues')
-    plt.xlabel('Revenue')
+    plt.xlabel('Log of revenue')
     plt.ylabel('Frequency')
-    plt.tight_layout()
-    plt.show()
+    plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]]);
 
 
 # 7. Function to plot the distribution of movies over the years
@@ -134,9 +133,8 @@ def plot_popularity_distribution(movies_df):
     
 
 def plot_popularity(movies_df):
-    # Again, let's also do it in log scale
     plt.figure(figsize=(10, 6))
-    sns.histplot(np.log1p(movies_df['popularity']), bins=30, kde=True)
+    sns.histplot(movies_df['popularity'], bins=30, kde=True)
     plt.title('Distribution of Movie popularity Scores')
-    plt.xlabel('Log of popularity Score')
-    plt.xticks(ticks=np.log1p([1e1,1e2,1e3]), labels=[f'{int(x)}' for x in [1e1,1e2,1e3]]);
+    plt.xlabel('popularity Score')
+    plt.ylabel('Frequency')
