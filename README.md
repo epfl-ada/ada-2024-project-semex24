@@ -4,12 +4,48 @@
 Our project explores how significant historical events and seasonal trends influence the films we watch, reflecting society’s evolving narratives. By examining the impact of events like World Wars, economic recessions, and modern-day challenges, we aim to uncover patterns in how cinema adapts to cultural shifts. This study analyzes genre popularity across seasons, such as horror in October and family films in December, to determine whether specific genres align with particular times of the year. Our goal is to reveal how historical context and seasonal preferences shape the evolution of cinema and connect audiences to stories that resonate with societal highs and lows.
 
 ## **Table of Contents**
-1. [Research Questions](#research-questions)  
-2. [Additional Dataset](#Additional-Datasets)  
-3. [Methods](#methods)  
-4. [Proposed Timeline](#proposed-timeline)  
-5. [Organization Within the Team](#organization-within-the-team)  
-6. [Questions for TAs](#questions-for-tas) 
+1. [Project structure](#project-structure)
+2. [Research Questions](#research-questions)  
+3. [Additional Dataset](#Additional-Datasets)  
+4. [Methods](#methods)  
+5. [Proposed Timeline](#proposed-timeline)  
+6. [Organization Within the Team](#organization-within-the-team)  
+7. [Questions for TAs](#questions-for-tas) 
+
+## **Project structure**
+
+
+ADA-2024-PROJECT-SEMEX24/
+│
+├── data/                         <- Project data files
+│   ├── character.metadata.tsv     <- Character metadata
+│   ├── movie.metadata.tsv         <- Movie metadata
+│   ├── movies_dataset.tsv         <- Dataset for movies
+│   └── plot_summaries.txt         <- Plot summaries for analysis
+│
+├── src/                           <- Source code
+│   ├── data/                      <- Data loading and processing
+│   │   └── data_loader.py         <- Script to load and preprocess data
+│   ├── media/                     <- Media files for the project
+│   │   └── timeline_chart.png     <- Timeline chart image
+│   ├── scripts/                   <- Jupyter Notebooks for various analyses
+│   │   ├── data_cleaning.ipynb    <- Notebook for cleaning data
+│   │   ├── Main_analysis.ipynb    <- Main analysis notebook
+│   │   └── Sentimental Analysis.ipynb <- Sentiment analysis notebook
+│   └── utils/                     <- Utility scripts for analysis
+│       ├── EDA.py                 <- Exploratory Data Analysis functions
+│       ├── historical.py          <- Functions for historical analysis
+│       ├── sentimental_analysis.py<- Sentiment analysis functions
+│       └── sesonal.py             <- Functions for seasonal analysis
+│
+├── tests/                         <- Tests of any kind (not yet populated)
+│
+├── results.ipynb                  <- A well-structured notebook for final results
+│
+├── .gitignore                     <- List of files ignored by git
+├── environment.yml                <- File for setting up the Python environment
+└── README.md                      <- Project README file
+
 
 
 ## **Research Questions**
