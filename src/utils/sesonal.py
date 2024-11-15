@@ -22,7 +22,7 @@ def is_full_date(date_str):
     return bool(re.match(full_date_pattern, str(date_str)))
 
 
-def date_pattern(df_movies, df_seasons):
+def date_pattern(df_movies):
 
     df_seasons = df_movies[df_movies['release_date'].apply(is_month_year_only)]
     print(f"Number of movies that have at least month and a year: {df_seasons.shape[0]}")
