@@ -48,20 +48,21 @@ ADA-2024-PROJECT-SEMEX24/
 
 ## **Research Questions**
 
-1. **How have major historical events shaped the narratives and genres of movies over time?**
-   - Objective: Analyze changes in dominant genres and themes during key historical periods (e.g., wars, economic downturns, political shifts) to understand how cinema reflects societal challenges and aspirations.
+1. **How do major historical events shape the genres and themes of movies?**
+   - **Objective**: Examine how significant historical events (e.g., wars, economic crises, political changes) influence shifts in dominant genres and narrative themes, reflecting societal issues and aspirations through cinema.
 
-2. **What seasonal patterns exist in the popularity of specific movie genres, and how do they evolve over decades?**
-   - Objective: Investigate how seasonality impacts genre preferences (e.g., horror in fall, family films in winter) and assess if these trends have shifted over time, reflecting changes in cultural celebrations or viewing habits.
+2. **What seasonal trends exist in the popularity of specific movie genres?**
+   - **Objective**: Identify patterns in genre popularity aligned with specific times of the year (e.g., horror in fall, family films in winter) and assess whether these seasonal trends have evolved over time in response to cultural or societal shifts.
 
-3. **How do historical periods and seasonal release strategies influence movie budgets?**
-   - Objective: Examine whether particular genres or historical periods are associated with higher production budgets, and if seasonal factors (e.g., summer blockbusters) impact the allocation of production resources.
+3. **How do historical periods and seasonal timing influence movie budgets?**
+   - **Objective**: Investigate whether certain historical periods or specific release seasons (like summer) are associated with higher production budgets, analyzing how external factors affect investment in movie production.
 
-4. **In what ways do release timing and historical context impact a movie’s box office revenue?**
-   - Objective: Assess the relationship between a movie’s release season, the historical period, and its revenue performance to identify optimal release strategies and understand how external factors influence financial success.
+4. **What impact do release season and historical context have on a movie's box office revenue?**
+   - **Objective**: Explore how the timing of a movie’s release, combined with the historical context, affects its financial performance, identifying optimal release strategies and the role of external influences on revenue outcomes.
 
-5. **How do the predominant sentiments in movie plot summaries align with major historical events?**
-   - Objective: Analyze the emotional tone in plot summaries during different historical events, exploring how sentiments in cinema reflect or respond to periods of social change, crisis, or celebration.
+5. **How does the sentiment in plot summaries reflect major historical events?**
+   - **Objective**: Analyze the emotional tone in plot summaries across different historical periods, exploring how the sentiments expressed in cinema align with or react to the emotional climate of the time.
+
 
 ## **Additional Dataset**
 
