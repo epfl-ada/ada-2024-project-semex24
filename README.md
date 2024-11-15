@@ -3,7 +3,7 @@
 ## **Table of Contents**
 1. [Abstract](#abstract)  
 2. [Research Questions](#research-questions)  
-3. [Additional Dataset](#additional-dataset)  
+3. [Additional Dataset](#Additional-Datasets)  
 4. [Methods](#methods)  
 5. [Proposed Timeline](#proposed-timeline)  
 6. [Organization Within the Team](#organization-within-the-team)  
