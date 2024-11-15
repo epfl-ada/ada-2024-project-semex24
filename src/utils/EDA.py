@@ -44,12 +44,12 @@ def plot_popular_languages(movies_df):
     
     movies_df['languages'] = movies_df['languages'].apply(
         lambda x: [
-            y if y == 'Silent film' else  # leave 'Silent film' unchanged
-            y[:-8] + 'Language' if y.lower().endswith('language') else  # if it ends in 'language' make it 'Language'
-            y + ' Language'  # add ' Language' if it doesn't end with 'language'
+            y if y == 'Silent film' else 
+            y[:-8] + 'Language' if y.lower().endswith('language') else  
+            y + ' Language'  
             for y in x] if isinstance(x, list) else x
     )
-    # Now do the same plot again
+    
     language_counts = movies_df['languages'].explode().value_counts()
     top_10_languages = language_counts.head(10)
 
