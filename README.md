@@ -26,13 +26,12 @@ Our project examines how major historical events and seasonal patterns influence
    - **Hypothesis**: High-budget action films may perform best in summer, while dramas may find success during award season in the latter part of the year.
 
 ## **Additional Datasets**
-Alongside *CMU Personas*, we incorporate the "Base de datos Servia" dataset to enrich our analysis with additional features such as popularity measures and revenue details, helping to reduce missing values and increase data reliability.
 
-!!!! Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible. !!!
+Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provides a comprehensive collection of 1 million movies with metadata such as titles, release dates, genres, revenue, and popularity scores. This dataset will complement CMU Personas by filling in missing values, particularly in revenue and popularity fields, enhancing the overall data quality. The integration of TMDB data allows us to standardize genres and dates across datasets, ensuring consistency. Additionally, the enriched features from TMDB will enable us to perform a more in-depth analysis of seasonal trends and historical impacts, offering a fuller picture of audience preferences over time.
 
 ## **Methods**
 
-1. **Data Collection & Cleaning**: We will use the *CMU Personas* dataset combined with the "Base de dato Servia" dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
+1. **Data Collection & Cleaning**: We will use the *CMU* dataset combined with the *TMDB Movies Dataset 2024* dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
 
 2. **Exploratory Data Analysis (EDA)**: Conduct initial EDA to visualize genre distribution, and popularity across historical periods and seasons. Using bar charts and time series, we’ll assess patterns and variations in popularity and revenue, setting the foundation for deeper analysis.
 
@@ -54,7 +53,7 @@ These methods will allow us to address the research questions by leveraging the 
 
 1. **Step 1: 28.10.2024 - 01.11.2024**
 
-   - Integrate *CMU Personas* with "Base de dato Servia," standardize formats, and address missing values, particularly in revenue fields.
+   - Integrate *CMU Personas* with *TMDB Movies Dataset 2024* standardize formats, and address missing values, particularly in revenue fields.
 
 2. **Step 2: 04.11.2024 - 08.11.2024**
 
