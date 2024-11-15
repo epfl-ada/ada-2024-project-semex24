@@ -10,7 +10,7 @@
 7. [Questions for TAs](#questions-for-tas) 
 
 ## **Abstract**
-Our project examines how major historical events and seasonal patterns influence the movies we watch. From wars and economic downturns to evolving audience preferences, cinema often reflects society’s shifting narratives. By analyzing the impact of events such as World Wars, the Great Depression, and modern-day crises, we seek to uncover patterns that demonstrate how movies adapt to reflect their time. This exploration includes analyzing genre popularity across seasons to determine whether specific genres, such as horror in October or family films in December, resonate with particular times of year. Through this project, we aim to reveal how cinema evolves in response to both society’s highs and lows.
+Our project explores how significant historical events and seasonal trends influence the films we watch, reflecting society’s evolving narratives. By examining the impact of events like World Wars, economic recessions, and modern-day challenges, we aim to uncover patterns in how cinema adapts to cultural shifts. This study analyzes genre popularity across seasons, such as horror in October and family films in December, to determine whether specific genres align with particular times of the year. Our goal is to reveal how historical context and seasonal preferences shape the evolution of cinema and connect audiences to stories that resonate with societal highs and lows.
 
 ## **Research Questions**
 
@@ -21,10 +21,6 @@ Our project examines how major historical events and seasonal patterns influence
 2. **Are specific movie genres consistently more popular in certain seasons?**
    - **Objective**: Determine if and how seasonal trends influence genre popularity, possibly aligning with cultural events like Halloween or the holiday season.
    - **Hypothesis**: Some genres align with specific times of year—e.g., horror in October, blockbusters in summer, and family movies in December—reflecting audience expectations across seasons.
-
-3. **How do seasonal trends and historical events impact box office revenues?**
-   - **Objective**: Assess whether the timing of a movie’s release impacts its financial success, especially concerning seasonal or historical influences.
-   - **Hypothesis**: Movies released during peak seasons (e.g., summer or winter holidays) likely perform better, while those released post-crisis may benefit from a recovering audience.
 
 4. **What are the most common genres during periods of socio-political upheaval?**
    - **Objective**: Analyze how movie production and genre popularity change in response to socio-political events.
@@ -59,73 +55,27 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 
 ## **Proposed Timeline**
 
-1. **Step 1: 28.10.2024 - 01.11.2024**
-
-   - Integrate *CMU Personas* with *TMDB Movies Dataset 2024* standardize formats, and address missing values, particularly in revenue fields.
-
-2. **Step 2: 04.11.2024 - 08.11.2024**
-
-   - Perform EDA on genres, characters, and seasonal release patterns, creating initial visualizations to identify trends.
-
-3. **Step 3: 011.11.2024 - 14.11.2024**
-
-   - Analyze genre popularity by season with statistical methods, validating hypotheses on seasonal genre patterns.
-
-4. **Step 4: 11.11.2024 - 14.11.2024**
-
-   - Conduct regression analysis to examine the impact of major historical events on genre shifts and theme changes.
-
-5. **Step 5: 02.12.2023 - 06.12.2024**
-
-   - Apply time series analysis to track revenue trends, identifying peak financial periods by season and historical event.
-
-6. **Step 6: 09.12.2023 - 13.12.2024**
-
-   - Implement clustering to uncover genre and regional preferences, examining how audience interests vary by country and season.
-
-7. **Step 7: 09.12.2023 - 13.12.2024**
-
-   - Analyze plot summaries for sentiment, providing a nuanced view of emotional tone.
-
-8. **Step 8: 16.12.2023 - 20.12.2024**
-
-   - Develop interactive visualizations, compile findings, and finalize the report, ensuring clear communication of results.
+1. **Step 1 (28.10.2024 - 01.11.2024)**: Integrate CMU and TMDB datasets, standardize formats, and address missing values.
+2. **Step 2 (04.11.2024 - 08.11.2024)**: Conduct EDA, create visualizations, and identify trends.
+3. **Step 3 (11.11.2024 - 14.11.2024)**: Analyze seasonal genre trends using statistical methods.
+4. **Step 4 (11.11.2024 - 14.11.2024)**: Perform regression analysis on historical events' impact.
+5. **Step 5 (02.12.2023 - 06.12.2024)**: Apply time series analysis to revenue patterns.
+6. **Step 6 (09.12.2023 - 13.12.2024)**: Conduct clustering for genre and regional preferences.
+7. **Step 7 (09.12.2023 - 13.12.2024)**: Perform sentiment analysis on plot summaries.
+8. **Step 8 (16.12.2023 - 20.12.2024)**: Finalize visualizations, compile findings, and complete the report.
 
 ![Proposed Timeline](timeline_chart.png)
 
 ## **Organization Within the Team**
 
-- **Step 1: Dataset Preparation and Cleaning**  
-   - *Team Members*: Milica & Marija  
-   - *Responsibilities*: Integrate and clean datasets, standardize formats, and address missing values in revenue.
-
-- **Step 2: Initial Data Exploration and Visualization**  
-   - *Team Members*: Marija & Eugenio  
-   - *Responsibilities*: Conduct EDA, create visualizations, and identify trends.
-
-- **Step 3: Seasonal Trends Analysis**  
-   - *Team Member*: Milica & Marija
-   - *Responsibilities*: Analyze genre popularity by season and document findings.
-
-- **Step 4: Historical Impact on Genre and Themes**  
-   - *Team Members*: Daniela & Marija  
-   - *Responsibilities*: Perform regression analysis and explore genre shifts linked to historical events.
-
-- **Step 5: Revenue Analysis Over Time**  
-   - *Team Members*: Andrea & Eugenio  
-   - *Responsibilities*: Conduct time series analysis on revenue, focusing on financial trends.
-
-- **Step 6: Clustering for Genre and Country Patterns**  
-   - *Team Members*: Milica & Eugenio  
-   - *Responsibilities*: Use clustering algorithms to analyze genre and country preferences.
-
-- **Step 7: Sentiment Analysis**  
-   - *Team Members*: Daniela & Andrea  
-   - *Responsibilities*: If time permits, conduct sentiment analysis on character descriptions and plot summaries.
-
-- **Step 8: Final Reporting and Visualization**  
-   - *Team Members*: Marija, Andrea & Daniela  
-   - *Responsibilities*: Develop visualizations, compile a cohesive data story, and finalize the report.
+- **Dataset Preparation**: Milica & Marija - Integrate datasets, address missing values.
+- **Data Exploration**: Marija & Eugenio - Conduct EDA and create visualizations.
+- **Seasonal Trends Analysis**: Milica & Marija - Analyze genre popularity by season.
+- **Historical Impact Analysis**: Daniela & Marija - Explore genre shifts due to historical events.
+- **Revenue Analysis**: Andrea & Eugenio - Perform time series analysis on revenue.
+- **Clustering Analysis**: Milica & Eugenio - Analyze genre and country preferences.
+- **Sentiment Analysis**: Daniela & Andrea - Analyze plot sentiment.
+- **Final Report and Visualization**: Marija, Andrea & Daniela - Develop visualizations and finalize the report.
 
 ## **Questions for TAs**  
 - Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
