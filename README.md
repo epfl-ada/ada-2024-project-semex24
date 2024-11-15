@@ -142,7 +142,8 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 
 ## **Questions for TAs**  
 - Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
-- Should we prioritize a specific method for clustering genres and countries, or experiment with multiple algorithms? 
-
+- For sentiment analysis on plot summaries, would you recommend any particular NLP techniques or libraries, given our dataset size and focus on historical events?
+- Are there any best practices for setting up a GitHub Pages site, especially when embedding interactive visualizations?
+- Do you have any advice on how to frame our conclusions to better highlight how historical and seasonal factors shape the movie industry, without overextending the interpretation of our data?
 ---
 
