@@ -4,12 +4,53 @@
 Our project explores how significant historical events and seasonal trends influence the films we watch, reflecting society’s evolving narratives. By examining the impact of events like World Wars, economic recessions, and modern-day challenges, we aim to uncover patterns in how cinema adapts to cultural shifts. This study analyzes genre popularity across seasons, such as horror in October and family films in December, to determine whether specific genres align with particular times of the year. Our goal is to reveal how historical context and seasonal preferences shape the evolution of cinema and connect audiences to stories that resonate with societal highs and lows.
 
 ## **Table of Contents**
-1. [Research Questions](#research-questions)  
-2. [Additional Dataset](#Additional-Datasets)  
-3. [Methods](#methods)  
-4. [Proposed Timeline](#proposed-timeline)  
-5. [Organization Within the Team](#organization-within-the-team)  
-6. [Questions for TAs](#questions-for-tas) 
+1. [Project structure](#project-structure)
+2. [Research Questions](#research-questions)  
+3. [Additional Dataset](#Additional-Datasets)  
+4. [Methods](#methods)  
+5. [Proposed Timeline](#proposed-timeline)  
+6. [Organization Within the Team](#organization-within-the-team)  
+7. [Questions for TAs](#questions-for-tas) 
+
+## **Project structure**
+
+## **Project Structure**
+
+The directory structure of the project is as follows:
+
+
+ADA-2024-PROJECT-SEMEX24/
+│
+├── data/                         <- Project data files
+│   ├── character.metadata.tsv     <- Character metadata
+│   ├── movie.metadata.tsv         <- Movie metadata
+│   ├── movies_dataset.tsv         <- Dataset for movies
+│   └── plot_summaries.txt         <- Plot summaries for analysis
+│
+├── src/                           <- Source code
+│   ├── data/                      <- Data loading and processing
+│   │   └── data_loader.py         <- Script to load and preprocess data
+│   ├── media/                     <- Media files for the project
+│   │   └── timeline_chart.png     <- Timeline chart image
+│   ├── scripts/                   <- Jupyter Notebooks for various analyses
+│   │   ├── data_cleaning.ipynb    <- Notebook for cleaning data
+│   │   ├── Main_analysis.ipynb    <- Main analysis notebook
+│   │   └── Sentimental Analysis.ipynb <- Sentiment analysis notebook
+│   └── utils/                     <- Utility scripts for analysis
+│       ├── EDA.py                 <- Exploratory Data Analysis functions
+│       ├── historical.py          <- Functions for historical analysis
+│       ├── sentimental_analysis.py<- Sentiment analysis functions
+│       └── sesonal.py             <- Functions for seasonal analysis
+│
+├── tests/                         <- Tests of any kind (not yet populated)
+│
+├── results.ipynb                  <- A well-structured notebook for final results
+│
+├── .gitignore                     <- List of files ignored by git
+├── environment.yml                <- File for setting up the Python environment
+└── README.md                      <- Project README file
+
+
 
 
 ## **Research Questions**
@@ -33,7 +74,7 @@ Our project explores how significant historical events and seasonal trends influ
 
 Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provides a comprehensive collection of 1 million movies with metadata such as titles, release dates, genres, revenue, and popularity scores. This dataset will complement CMU Personas by filling in missing values, particularly in revenue and popularity fields, enhancing the overall data quality. The integration of TMDB data allows us to standardize genres and dates across datasets, ensuring consistency. Additionally, the enriched features from TMDB will enable us to perform a more in-depth analysis of seasonal trends and historical impacts, offering a fuller picture of audience preferences over time.
 
-https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?resource=download 
+   Source: https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?resource=download 
 
 ## **Methods**
 
@@ -56,35 +97,55 @@ https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?r
 
 ## **Proposed Timeline**
 
-1. **Step 1 (28.10.2024 - 01.11.2024)**: Integrate CMU and TMDB datasets, standardize formats, and address missing values.
-2. **Step 2 (02.11.2024 - 08.11.2024)**: Conduct EDA, create visualizations, and identify trends.
-3. **Step 3 (11.11.2024 - 14.11.2024)**: Analyze seasonal genre trends using statistical methods.
-4. **Step 4 (11.11.2024 - 14.11.2024)**: Perform regression analysis on historical events' impact.
-5. **Step 5 (11.11.2024 - 01.12.2024)**: Apply time series analysis to revenue patterns.
-6. **Step 6 (11.11.2024 - 03.12.2024)**: Conduct clustering for genre and regional preferences.
-7. **Step 7 (14.11.2024 - 05.12.2024)**: Perform sentiment analysis on plot summaries.
-8. **Step 8 (16.11.2024 - 20.12.2024)**: Finalize visualizations, compile findings, and complete the report.
+1. **Step 1 (20.10.2024 - 26.10.2024)**:  
+   - Dataset Preparation: Integrate CMU and TMDB datasets, standardize formats, and address missing values.
+
+2. **Step 2 (24.10.2024 - 31.10.2024)**:  
+   - Data Exploration: Conduct exploratory data analysis (EDA), create initial visualizations, and identify trends.
+
+3. **Step 3 (24.10.2024 - 01.11.2024)**:  
+   - Seasonal Trends Analysis: Analyze genre popularity by season using statistical methods.
+
+4. **Step 4 (24.10.2024 - 13.11.2024)**:  
+   - Historical Impact Analysis: Explore genre shifts due to historical events and perform regression analysis to assess impact.
+
+5. **Step 5 (24.10.2024 - 13.11.2024)**:  
+   - Revenue Analysis: Apply time series analysis to examine revenue patterns over time and across seasons.
+
+6. **Step 6 (02.11.2024 - 20.11.2024)**:  
+   - Clustering Analysis: Conduct clustering for genre and regional preferences to identify patterns in audience demographics.
+
+7. **Step 7 (10.11.2024 - 01.12.2024)**:  
+   - Sentiment Analysis: Perform sentiment analysis on plot summaries to assess emotional tone during historical events.
+
+8. **Step 8 (15.11.2024 - 15.12.2024)**:  
+   - GitHub Pages Setup: Develop a GitHub Pages site for the project to display findings and visualizations interactively.
+
+9. **Step 9 (15.11.2024- 18.12.2024)**:  
+   - Final Report and Submission: Compile findings into a comprehensive report and finalize all project documentation for submission.complete the report.
 
 ![Proposed Timeline](src/media/timeline_chart.png)
 
 ## **Organization Within the Team**
 
-- **Dataset Preparation**: Milica, Marija & Eugenio 
-   - Integrate datasets and address missing values.
-- **Data Exploration**: Marija, Andrea & Daniela 
-   - Conduct EDA and create initial visualizations to identify trends.
-- **Seasonal Trends Analysis**: Milica & Eugenio 
-   - Analyze genre popularity by season, using statistical methods.
-- **Historical Impact Analysis**: Daniela & Andrea 
-   - Explore genre shifts due to historical events and perform regression analysis.
-- **Revenue Analysis**: Marija & Milica 
-   - Apply time series analysis to examine revenue patterns over time.
-- **Clustering Analysis**: Eugenio & Andrea 
-   - Conduct clustering analysis for genre and regional preferences.
-- **Sentiment Analysis**: Daniela, Eugenio & Marija 
-   - Perform sentiment analysis on plot summaries to assess emotional tone.
-- **Final Report and Visualization**: Milica, Marija & Andrea
-    - Compile the final report and create interactive visualizations to communicate findings.
+
+- **Step 1**:  Milica, Marija & Eugenio
+
+- **Step 2**: Marija, Andrea & Daniela
+
+- **Step 3**:  Milica & Eugenio
+
+- **Step 4**:  Daniela & Andrea
+
+- **Step 5**: Marija & Milica
+
+- **Step 6**:Eugenio & Andrea
+
+- **Step 7**: Daniela, Eugenio & Marija
+
+- **Step 8**:  Milica & Andrea
+
+- **Step 9**: Marija, Andrea & Daniela
 
 ## **Questions for TAs**  
 - Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
