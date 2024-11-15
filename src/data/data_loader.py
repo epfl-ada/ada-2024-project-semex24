@@ -29,3 +29,19 @@ def feature_engineering_movies(df):
     movies_df = movies_df.dropna(subset=['release_year'])
 
     return movies_df
+
+
+def load_data_sentiment_analysis():
+    #Loaad again the data
+    plot_summary_df = pd.read_csv("data/plot_summaries.txt", delimiter='\t', names=["wikipedia_id", "plot_summary"])
+    movies_df = pd.read_csv("data/movies_dataset.tsv", delimiter='\t')
+    merged_df = pd.merge(plot_summary_df, movies_df, on="wikipedia_id", how="inner")
+    return merged_df
+
+def preprocess_data_sentiment_analysis(df):
+    merged_df = df.copy()
+    merged_df['release_date'] = pd.to_datetime(merged_df['release_date'], errors='coerce')
+    merged_df = merged_df.dropna(subset=['release_date'])
+    merged_df['year'] = merged_df['release_date'].dt.year
+
+    return merged_df
