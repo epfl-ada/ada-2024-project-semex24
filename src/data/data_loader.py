@@ -26,5 +26,6 @@ def feature_engineering_movies(df):
     # Converting to lists genre column, country and language column
     movies_df['countries'] = movies_df['countries'].str.split(', ')
     movies_df['languages'] = movies_df['languages'].str.split(', ')
+    movies_df = movies_df.dropna(subset=['release_year'])
 
     return movies_df

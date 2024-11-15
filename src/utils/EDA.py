@@ -79,14 +79,10 @@ def plot_log_scale_budget_distribution(movies_df):
     plt.show()
 
 
-# 5. Function to describe budget statistics
-def describe_budget(movies_df):
-   movies_df['budget'].describe()
-
 # 6. Function to plot the distribution of movie revenues
 def plot_revenue_distribution(movies_df):
     plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['Revenue'], bins=50, kde=True)
+    sns.histplot(movies_df['revenue'], bins=50, kde=True)
     plt.title('Distribution of Movie Revenues')
     plt.xlabel('Revenue')
     plt.ylabel('Frequency')
@@ -107,6 +103,21 @@ def plot_movies_over_years(movies_df):
 
 # 8. Function to plot the top 10 most popular movie genres
 def plot_top_10_genres(movies_df):
+    genre_counts = {}
+
+    for genre_list in movies_df['genres'].dropna():
+        for genre in genre_list:
+            genre = genre.strip()
+            if genre in genre_counts:
+                genre_counts[genre] += 1
+            else:
+                genre_counts[genre] = 1
+
+    most_common_genres = sorted(genre_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+
+    print("10 Most Popular Genres:")
+    for genre, count in most_common_genres:
+        print(f"{genre}: {count}")
     plt.figure(figsize=(10, 6))
     genres, counts = zip(*most_common_genres)
     sns.barplot(x=genres, y=counts)
@@ -116,10 +127,16 @@ def plot_top_10_genres(movies_df):
 # 9. Function to plot the distribution of popularity scores
 def plot_popularity_distribution(movies_df):
     plt.figure(figsize=(10, 6))
-    sns.histplot(df_filtered['popularity'], bins=30, kde=True)
+    sns.histplot(movies_df['popularity'], bins=30, kde=True)
     plt.title('Distribution of Movie popularity Scores')
     plt.xlabel('popularity Score')
     plt.ylabel('Frequency')
     
-def popularyty_description(movies_df):
-    df_filtered['popularity'].describe()
+
+def plot_popularity(movies_df):
+    # Again, let's also do it in log scale
+    plt.figure(figsize=(10, 6))
+    sns.histplot(np.log1p(movies_df['popularity']), bins=30, kde=True)
+    plt.title('Distribution of Movie popularity Scores')
+    plt.xlabel('Log of popularity Score')
+    plt.xticks(ticks=np.log1p([1e1,1e2,1e3]), labels=[f'{int(x)}' for x in [1e1,1e2,1e3]]);
