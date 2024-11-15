@@ -26,7 +26,7 @@ Our project examines how major historical events and seasonal patterns influence
    - **Hypothesis**: High-budget action films may perform best in summer, while dramas may find success during award season in the latter part of the year.
 
 ## **Additional Datasets**
-Alongside *CMU Personas*, we incorporate the "Base de dato Servia" dataset to enrich our analysis with additional features such as popularity measures and revenue details, helping to reduce missing values and increase data reliability.
+Alongside *CMU Personas*, we incorporate the "Base de datos Servia" dataset to enrich our analysis with additional features such as popularity measures and revenue details, helping to reduce missing values and increase data reliability.
 
 !!!! Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible. !!!
 
@@ -84,6 +84,8 @@ These methods will allow us to address the research questions by leveraging the 
 
    - Develop interactive visualizations, compile findings, and finalize the report, ensuring clear communication of results.
 
+![Proposed Timeline](timeline_chart.png)
+
 ## **Organization Within the Team**
 
 - **Step 1: Dataset Preparation and Cleaning**  
@@ -123,3 +125,4 @@ These methods will allow us to address the research questions by leveraging the 
 - Should we prioritize a specific method for clustering genres and countries, or experiment with multiple algorithms? 
 
 ---
+
