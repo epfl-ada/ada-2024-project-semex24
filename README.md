@@ -52,44 +52,36 @@ These methods will allow us to address the research questions by leveraging the 
 
 ## **Proposed Timeline**
 
-1. **28.10.2024 - 01.11.2024**
+1. **Step 1: 28.10.2024 - 01.11.2024**
 
-   Step 1: 
    - Integrate *CMU Personas* with "Base de dato Servia," standardize formats, and address missing values, particularly in revenue fields.
 
-2. **04.11.2024 - 08.11.2024**
+2. **Step 2: 04.11.2024 - 08.11.2024**
 
-   Setep 2: 
    - Perform EDA on genres, characters, and seasonal release patterns, creating initial visualizations to identify trends.
 
-3. **011.11.2024 - 14.11.2024**
+3. **Step 3: 011.11.2024 - 14.11.2024**
 
-   Step 3: 
    - Analyze genre popularity by season with statistical methods, validating hypotheses on seasonal genre patterns.
 
-4. **11.11.2024 - 14.11.2024**
+4. **Step 4: 11.11.2024 - 14.11.2024**
 
-   Step 4:
    - Conduct regression analysis to examine the impact of major historical events on genre shifts and theme changes.
 
-5. **02.12.2023 - 06.12.2024**
+5. **Step 5: 02.12.2023 - 06.12.2024**
 
-   Step 5:
    - Apply time series analysis to track revenue trends, identifying peak financial periods by season and historical event.
 
-6. **09.12.2023 - 13.12.2024**
+6. **Step 6: 09.12.2023 - 13.12.2024**
 
-   Step 6:
    - Implement clustering to uncover genre and regional preferences, examining how audience interests vary by country and season.
 
-7. **09.12.2023 - 13.12.2024**
+7. **Step 7: 09.12.2023 - 13.12.2024**
 
-   Step 7:
    - Analyze plot summaries for sentiment, providing a nuanced view of emotional tone.
 
-8. **16.12.2023 - 20.12.2024**
+8. **Step 8: 16.12.2023 - 20.12.2024**
 
-   Step 8:
    - Develop interactive visualizations, compile findings, and finalize the report, ensuring clear communication of results.
 
 ## **Organization Within the Team**
