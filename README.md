@@ -14,6 +14,10 @@ Our project explores how significant historical events and seasonal trends influ
 
 ## **Project structure**
 
+## **Project Structure**
+
+The directory structure of the project is as follows:
+
 
 ADA-2024-PROJECT-SEMEX24/
 │
