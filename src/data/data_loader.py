@@ -1,6 +1,8 @@
 import pandas as pd
+import ast
 
 def data_loader_movies(file_path):
+    file_path = 'data/movies_dataset.tsv'
     movies_df =  pd.read_csv(file_path, sep='\t')
     return movies_df
 
