@@ -50,7 +50,7 @@ ADA-2024-PROJECT-SEMEX24/
 
 **Global question: How do societal eras, including historical periods and seasonal trends, shape the evolution of cinema?**
 
-**Objective**: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
+Objective: Investigate how societal changes, significant historical events, and seasonal patterns influence the development of film genres, themes, and storytelling across different time periods.
 
 1. **How do major historical events shape the genres and themes of movies?**
    - **Objective**: Examine how significant historical events (e.g., wars, economic crises, political changes) influence shifts in dominant genres and narrative themes.
