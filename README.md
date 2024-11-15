@@ -44,7 +44,7 @@ Alongside *CMU Personas*, we incorporate the "Base de dato Servia" dataset to en
 
 6. **Clustering for Genre and Country Insights**: We’ll apply clustering algorithms, like K-means, to identify patterns in genre preferences based on release season and country, aiming to uncover optimal release strategies based on cultural and regional differences.
 
-7. **Sentiment Analysis (if time permits)**: Using NLP, we’ll analyze character descriptions and plot summaries to capture sentiment and thematic tones. This will add depth to our analysis of genre and theme changes across historical events.
+7. **Sentiment Analysis**: Using NLP, we’ll analyze plot summaries to capture sentiment and thematic tones. This will add depth to our analysis of genre and theme changes across historical events.
 
 8. **Data Visualization**: We’ll create interactive visualizations to illustrate genre-season relationships, revenue trends, and historical impact on cinema, using heatmaps and bubble charts to communicate our findings clearly.
 
@@ -52,44 +52,44 @@ These methods will allow us to address the research questions by leveraging the 
 
 ## **Proposed Timeline**
 
-1. **Step 1: Dataset Preparation and Cleaning**
+1. **28.10.2024 - 01.11.2024**
 
-   28.10.2024 - 01.11.2024
+   Step 1: 
    - Integrate *CMU Personas* with "Base de dato Servia," standardize formats, and address missing values, particularly in revenue fields.
 
-2. **Step 2: Initial Data Exploration and Visualization**
+2. **04.11.2024 - 08.11.2024**
 
-   04.11.2024 - 08.11.2024
+   Setep 2: 
    - Perform EDA on genres, characters, and seasonal release patterns, creating initial visualizations to identify trends.
 
-3. **Step 3: Seasonal Trends Analysis**
+3. **011.11.2024 - 14.11.2024**
 
-   011.11.2024 - 14.11.2024
+   Step 3: 
    - Analyze genre popularity by season with statistical methods, validating hypotheses on seasonal genre patterns.
 
-4. **Step 4: Historical Impact on Genre and Themes**
+4. **11.11.2024 - 14.11.2024**
 
-   11.11.2024 - 14.11.2024
+   Step 4:
    - Conduct regression analysis to examine the impact of major historical events on genre shifts and theme changes.
 
-5. **Step 5: Revenue Analysis Over Time**
+5. **02.12.2023 - 06.12.2024**
 
-    02.12.2023 - 06.12.2024
+   Step 5:
    - Apply time series analysis to track revenue trends, identifying peak financial periods by season and historical event.
 
-6. **Step 6: Clustering for Genre and Country Patterns**
+6. **09.12.2023 - 13.12.2024**
 
-    09.12.2023 - 13.12.2024
+   Step 6:
    - Implement clustering to uncover genre and regional preferences, examining how audience interests vary by country and season.
 
-7. **Step 7: Optional Sentiment Analysis**
+7. **09.12.2023 - 13.12.2024**
 
-    09.12.2023 - 13.12.2024
-   - If time permits, analyze character descriptions and plot summaries for sentiment, providing a nuanced view of emotional tone.
+   Step 7:
+   - Analyze plot summaries for sentiment, providing a nuanced view of emotional tone.
 
-8. **Step 8: Final Reporting and Visualization**
+8. **16.12.2023 - 20.12.2024**
 
-    16.12.2023 - 20.12.2024
+   Step 8:
    - Develop interactive visualizations, compile findings, and finalize the report, ensuring clear communication of results.
 
 ## **Organization Within the Team**
@@ -103,7 +103,7 @@ These methods will allow us to address the research questions by leveraging the 
    - *Responsibilities*: Conduct EDA, create visualizations, and identify trends.
 
 - **Step 3: Seasonal Trends Analysis**  
-   - *Team Member*: Milica  
+   - *Team Member*: Milica & Marija
    - *Responsibilities*: Analyze genre popularity by season and document findings.
 
 - **Step 4: Historical Impact on Genre and Themes**  
@@ -119,11 +119,11 @@ These methods will allow us to address the research questions by leveraging the 
    - *Responsibilities*: Use clustering algorithms to analyze genre and country preferences.
 
 - **Step 7: Sentiment Analysis**  
-   - *Team Members*: Marija & Andrea  
+   - *Team Members*: Daniela & Andrea  
    - *Responsibilities*: If time permits, conduct sentiment analysis on character descriptions and plot summaries.
 
 - **Step 8: Final Reporting and Visualization**  
-   - *Team Members*: Daniela, Andrea & Milica  
+   - *Team Members*: Marija, Andrea & Daniela  
    - *Responsibilities*: Develop visualizations, compile a cohesive data story, and finalize the report.
 
 ## **Questions for TAs**  
