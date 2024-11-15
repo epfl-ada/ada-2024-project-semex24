@@ -1,5 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from numpy.polynomial import Polynomial
 
 def comparison_genres_war_periods(movies_df):
     # We first made dataframes per period (WW1, nonwar, WW2)
@@ -919,3 +922,257 @@ def ww2_correlation(movies_df):
     correlation = war_percentage_by_year.corr(wwii_indicator_by_year)
 
     print("Correlation between WWII period and percentage of war movies produced:", correlation)
+
+
+def ww1_correlation_us(movies_df):
+    # First we get all the war movies from the US and group them by year
+    us_movies_df = movies_df[movies_df['countries'].apply(lambda x: 'United States of America' in x if isinstance(x, list) else False)]
+    war_movies_us_df = us_movies_df[us_movies_df['genres'].apply(lambda x: 'War' in x if isinstance(x, list) else False)]
+    war_movie_count_by_year_us = war_movies_us_df.groupby('release_year').size()
+    total_movies_by_year_us = us_movies_df.groupby('release_year').size()
+
+    # Then we obtained the percentage
+    war_percentage_by_year_us = (war_movie_count_by_year_us / total_movies_by_year_us) * 100
+
+    # Then we create an indicator to see if movie occurs during WW2 1 for movies that occured and if not the value is 0
+    start_year, end_year = 1939, 1945
+    us_movies_df.loc[:, 'WWII Indicator'] = us_movies_df['release_year'].apply(lambda x: 1 if start_year <= x <= end_year else 0)
+    wwii_indicator_by_year_us = us_movies_df.groupby('release_year')['WWII Indicator'].max()
+
+    #Finaly we calculate the correlation between the percentage of war movies and the years of war from the US
+    correlation_us = war_percentage_by_year_us.corr(wwii_indicator_by_year_us)
+
+    print("Correlation between WWII period and percentage of War movies produced in the United States:", correlation_us)
+
+
+def ww2_correlation_uk(movies_df):
+        # First we get all the war movies from the UK and group them by year
+    uk_movies_df = movies_df[movies_df['countries'].apply(lambda x: 'United Kingdom' in x if isinstance(x, list) else False)]
+    war_movies_uk_df = uk_movies_df[uk_movies_df['genres'].apply(lambda x: 'War' in x if isinstance(x, list) else False)]
+    war_movie_count_by_year_uk = war_movies_uk_df.groupby('release_year').size()
+    total_movies_by_year_uk = uk_movies_df.groupby('release_year').size()
+
+    # Then we obtained the percentage
+    war_percentage_by_year_uk = (war_movie_count_by_year_uk / total_movies_by_year_uk) * 100
+
+    # Then we create an indicator to see if movie occurs during WW2 1 for movies that occured and if not the value is 0
+    start_year, end_year = 1939, 1945
+    uk_movies_df.loc[:, 'WWII Indicator'] = uk_movies_df['release_year'].apply(lambda x: 1 if start_year <= x <= end_year else 0)
+    wwii_indicator_by_year_us = uk_movies_df.groupby('release_year')['WWII Indicator'].max()
+
+    #Finaly we calculate the correlation between the percentage of war movies and the years of war from the UK
+    correlation_us = war_percentage_by_year_uk.corr(wwii_indicator_by_year_us)
+
+    print("Correlation between WWII period and percentage of War movies produced in the United Kigdom:", correlation_us)
+
+
+def ww2_correlation_mystery(movies_df):
+    # First we get all the mystery movies and group them by year
+    mystery_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Mystery' in x if isinstance(x, list) else False)]
+    mystery_movie_count_by_year = mystery_movies_df.groupby('release_year').size()
+    total_movies_by_year = movies_df.groupby('release_year').size()
+
+    # Then we obtained the percentage
+    mystery_percentage_by_year = (mystery_movie_count_by_year / total_movies_by_year) * 100
+
+    # Then we create an indicator to see if movie occurs during WW2 1 for movies that occured and if not the value is 0
+    start_year, end_year = 1932, 1948
+    movies_df['WWII Indicator'] = movies_df['release_year'].apply(lambda x: 1 if start_year <= x <= end_year else 0)
+    wwii_indicator_by_year = movies_df.groupby('release_year')['WWII Indicator'].max()
+
+    correlation = mystery_percentage_by_year.corr(wwii_indicator_by_year)
+
+    print("Correlation between WWII period and percentage of Mystery movies produced:", correlation)
+
+
+def ww2_correlation_documentary(movies_df):
+    # First we get all the Documentary movies and group them by year
+    documentary_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Documentary' in x if isinstance(x, list) else False)]
+    documentary_movies_1910_1960_df = documentary_movies_df[(documentary_movies_df['release_year'] >= 1910) & (documentary_movies_df['release_year'] <= 1960)]
+    documentary_movie_count_by_year = documentary_movies_1910_1960_df.groupby('release_year').size()
+    total_movies_by_year_1910_1960 = movies_df[(movies_df['release_year'] >= 1910) & (movies_df['release_year'] <= 1960)].groupby('release_year').size()
+
+    # Then we obtained the percentage
+    documentary_percentage_by_year = (documentary_movie_count_by_year / total_movies_by_year_1910_1960) * 100
+
+    # Then we create an indicator to see if movie occurs during WW2 1 for movies that occured and if not the value is 0
+    start_year, end_year = 1939, 1945
+    movies_df['WWII Indicator'] = movies_df['release_year'].apply(lambda x: 1 if start_year <= x <= end_year else 0)
+    wwii_indicator_by_year = movies_df[(movies_df['release_year'] >= 1910) & (movies_df['release_year'] <= 1960)].groupby('release_year')['WWII Indicator'].max()
+
+    correlation = documentary_percentage_by_year.corr(wwii_indicator_by_year)
+
+    print("Correlation between WWII period and percentage of Documentary movies produced (1910-1960):", correlation)
+
+
+def sci_fi_1943_1959(movies_df):
+    # First we get the science fiction movies, count them and obtain the percentage
+    sci_fi_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Science Fiction' in x if isinstance(x, list) else False)]
+    sci_fi_count_by_year = sci_fi_movies_df.groupby('release_year').size()
+    total_movies_by_year = movies_df.groupby('release_year').size()
+    sci_fi_percentage_by_year = ((sci_fi_count_by_year / total_movies_by_year) * 100).dropna()
+
+
+    #Then we adjust the period to focus our function
+    pre_space_race_years = range(1943, 1959)
+    sci_fi_percentage_pre_space_race = sci_fi_percentage_by_year[sci_fi_percentage_by_year.index.isin(pre_space_race_years)]
+
+    # Next we get our X and Y values
+    years = np.array(sci_fi_percentage_pre_space_race.index).reshape(-1, 1)
+    percentages = sci_fi_percentage_pre_space_race.values
+
+    # We apply regresion using function from sklearn
+    model = LinearRegression()
+    model.fit(years, percentages)
+    trendline = model.predict(years)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='gray', label='Percentage of Sci-Fi Movies (All Years)')
+    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1943 to 1959')
+    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label='Trendline (1943-1959)')
+
+    plt.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1957-1975)")
+
+    plt.ylim(0, 20)
+
+    plt.xlabel('Year')
+    plt.ylabel('Percentage of Sci-Fi Movies')
+    plt.title('Trend in Sci-Fi Movies from 1943 to 1959')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    #Finaly we display the slope value
+    print("Slope from 1943 to 1959:", model.coef_[0])
+
+
+def sci_fi_1937_1975(movies_df):
+    # First we get the science fiction movies, count them and obtain the percentage
+    sci_fi_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Science Fiction' in x if isinstance(x, list) else False)]
+    sci_fi_count_by_year = sci_fi_movies_df.groupby('release_year').size()
+    total_movies_by_year = movies_df.groupby('release_year').size()
+    sci_fi_percentage_by_year = (sci_fi_count_by_year / total_movies_by_year * 100).dropna()
+
+    #Then we adjust the period to focus our function
+    pre_space_race_years = range(1947, 1982)
+    sci_fi_percentage_pre_space_race = sci_fi_percentage_by_year[sci_fi_percentage_by_year.index.isin(pre_space_race_years)]
+
+    sci_fi_percentage_pre_space_race = sci_fi_percentage_pre_space_race.reindex(pre_space_race_years, fill_value=0)
+
+    # Later we adjust our data for our function
+    years = np.array(sci_fi_percentage_pre_space_race.index)
+    percentages = sci_fi_percentage_pre_space_race.values
+
+    # We apply a 3rd degree polynomial function
+    degree = 3
+    poly_model = Polynomial.fit(years, percentages, degree)
+
+    trendline = poly_model(years)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='gray', label='Percentage of Sci-Fi Movies (All Years)')
+    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1947 to 1982')
+    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
+
+    plt.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1947-1982)")
+
+    plt.ylim(0, 20)
+
+    plt.xlabel('Year')
+    plt.ylabel('Percentage of Sci-Fi Movies')
+    plt.title('Trend in Sci-Fi Movies from 1937 to 1975')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+    # Finaly we display the function
+    coefficients = poly_model.convert().coef
+    poly_function_str = "f(x) = " + " + ".join(f"{coef:.3f}*x^{i}" if i > 0 else f"{coef:.3f}" for i, coef in enumerate(coefficients))
+    print("Polynomial Function:", poly_function_str)
+
+
+def documentary_1991_2006_linear(movies_df):
+    # First we get the documentary movies, count them and obtain the percentage
+    documentary_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Documentary' in x if isinstance(x, list) else False)]
+    documentary_count_by_year = documentary_movies_df.groupby('release_year').size()
+    total_movies_by_year = movies_df.groupby('release_year').size()
+    documentary_percentage_by_year = ((documentary_count_by_year / total_movies_by_year) * 100).dropna()
+
+    #Then we adjust the period to focus our function
+    pre_post_911_years = range(1990, 2009)
+    documentary_percentage_pre_post_911 = documentary_percentage_by_year[documentary_percentage_by_year.index.isin(pre_post_911_years)]
+
+    # Next we get our X and Y values
+    years = np.array(documentary_percentage_pre_post_911.index).reshape(-1, 1)
+    percentages = documentary_percentage_pre_post_911.values
+
+    # We apply regresion using function from sklearn
+    model = LinearRegression()
+    model.fit(years, percentages)
+    trendline = model.predict(years)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
+    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1990 to 2009')
+    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label='Trendline (1990-2009)')
+
+    plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+
+    plt.ylim(0, 20)
+
+    plt.xlabel('Year')
+    plt.ylabel('Percentage of Documentary Movies')
+    plt.title('Trend in Documentary Movies from 1991 to 2006')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    # Display the slope value
+    print("Slope from 1990 to 2009:", model.coef_[0])
+
+
+def documentary_1991_2006_polynomial(movies_df):
+    # First we get the documentary movies, count them and obtain the percentage
+documentary_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Documentary' in x if isinstance(x, list) else False)]
+documentary_count_by_year = documentary_movies_df.groupby('release_year').size()
+total_movies_by_year = movies_df.groupby('release_year').size()
+documentary_percentage_by_year = (documentary_count_by_year / total_movies_by_year * 100).dropna()
+
+#Then we adjust the period to focus our function
+pre_post_911_years = range(1990, 2009)
+documentary_percentage_pre_post_911 = documentary_percentage_by_year[documentary_percentage_by_year.index.isin(pre_post_911_years)]
+
+documentary_percentage_pre_post_911 = documentary_percentage_pre_post_911.reindex(pre_post_911_years, fill_value=0)
+
+# Later we adjust our data for our function
+years = np.array(documentary_percentage_pre_post_911.index)
+percentages = documentary_percentage_pre_post_911.values
+
+# We apply a 2nd degree polynomial function (we used second because 3rd displayed the same plot)
+degree = 2
+poly_model = Polynomial.fit(years, percentages, degree)
+
+trendline = poly_model(years)
+
+plt.figure(figsize=(10, 6))
+plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
+plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1991 to 2006')
+plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
+
+plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+
+plt.ylim(0, 20)
+
+plt.xlabel('Year')
+plt.ylabel('Percentage of Documentary Movies')
+plt.title('Trend in Documentary Movies from 1991 to 2006')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Finaly we display the function
+coefficients = poly_model.convert().coef
+poly_function_str = "f(x) = " + " + ".join(f"{coef:.3f}*x^{i}" if i > 0 else f"{coef:.3f}" for i, coef in enumerate(coefficients))
+print("Polynomial Function:", poly_function_str)
+
