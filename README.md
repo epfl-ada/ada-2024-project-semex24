@@ -14,21 +14,23 @@ Our project explores how significant historical events and seasonal trends influ
 
 ## **Research Questions**
 
-1. **How do significant historical events shape movie genres and themes?**
-   - **Objective**: Investigate whether major events (e.g., World Wars, economic recessions) influence shifts in film genres and storytelling themes.
-   - **Hypothesis**: During societal upheaval or recovery, genres like drama and war films may increase, while lighter genres might decline. Conversely, comedies and romantic genres may flourish in stable periods.
+1. **How do major historical events influence the themes and genres of movies?**
+   - Objective: Identify shifts in genre and thematic focus during significant historical periods, such as wars or economic recessions.
 
-2. **Are specific movie genres consistently more popular in certain seasons?**
-   - **Objective**: Determine if and how seasonal trends influence genre popularity, possibly aligning with cultural events like Halloween or the holiday season.
-   - **Hypothesis**: Some genres align with specific times of year—e.g., horror in October, blockbusters in summer, and family movies in December—reflecting audience expectations across seasons.
+2. **Are there specific seasons where certain movie genres are more popular?**
+   - Objective: Examine seasonal trends to see if particular genres align with times of the year, such as horror in autumn or family films in winter.
 
-4. **What are the most common genres during periods of socio-political upheaval?**
-   - **Objective**: Analyze how movie production and genre popularity change in response to socio-political events.
-   - **Hypothesis**: In times of upheaval, genres like drama and thriller may rise as filmmakers respond to societal tensions. Stable periods may encourage escapist genres like comedy and adventure.
+3. **How do historical events and seasonal timing impact movie budgets?**
+   - Objective: Analyze if and how budgets vary across seasons and historical events, identifying trends in production investment.
 
-5. **What is the optimal season for releasing movies in various genres?**
-   - **Objective**: Identify the best season for releasing different genres to maximize audience engagement and revenue.
-   - **Hypothesis**: High-budget action films may perform best in summer, while dramas may find success during award season in the latter part of the year.
+4. **What is the relationship between release season, historical context, and movie revenue?**
+   - Objective: Investigate how the timing of a movie’s release affects its financial success, considering both seasonal peaks and historical influences.
+
+5. **What are the predominant sentiments in plot summaries during historical events?**
+   - Objective: Explore the emotional tone in movie plots, examining how sentiment trends align with or respond to major historical events.
+
+6. **How has language diversity in movies changed in response to historical events and audience shifts over time?**
+   - Objective: Explore the variation in language representation within movies over different historical periods, reflecting cultural and societal changes.
 
 ## **Additional Dataset**
 
