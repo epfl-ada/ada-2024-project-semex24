@@ -8,7 +8,7 @@ import numpy as np
 
 # 1. Function to plot top movie-producing countries
 def plot_top_10_countries(movies_df):
-    country_counts = movies_df['Movie countries'].str.split(',').explode().str.strip().value_counts()
+    country_counts = movies_df['countries'].explode().value_counts() #since we can have more than 1 country in countries column
     top_10_countries = country_counts.head(10)
 
     plt.figure(figsize=(10, 6))
@@ -17,7 +17,6 @@ def plot_top_10_countries(movies_df):
     plt.xlabel('Country')
     plt.ylabel('Number of Movies')
     plt.xticks(rotation=45)
-    plt.tight_layout()
     plt.show()
 
 # 2. Function to plot the most popular movie languages
@@ -45,9 +44,8 @@ def plot_budget_distribution(movies_df):
 
 # 4. Function to plot movie budgets in log scale (handling zero budgets)
 def plot_log_scale_budget_distribution(movies_df):
-    # Replace zero budgets with NaN to avoid log issues
     log_budgets = movies_df['Budget'].replace(0, np.nan)
-    log_budgets = np.log10(log_budgets.dropna())  # log scale
+    log_budgets = np.log10(log_budgets.dropna()) 
 
     plt.figure(figsize=(10, 6))
     sns.histplot(log_budgets, bins=50, kde=True)
