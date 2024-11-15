@@ -22,6 +22,16 @@ def is_full_date(date_str):
     return bool(re.match(full_date_pattern, str(date_str)))
 
 
+def getdf_filtered(movies_df):
+    df_filtered = movies_df.dropna(subset=['release_year'])
+    # How many unique values for year are there?
+    df_filtered = df_filtered[df_filtered['release_year'] >= 1800]
+    percentile_95 = df_filtered['popularity'].quantile(0.95)
+    df_filtered = movies_df.dropna(subset=['release_year'])
+    df_filtered[df_filtered['popularity'] > percentile_95] = np.nan
+    return df_filtered
+
+
 def date_pattern(df_movies):
 
     df_seasons = df_movies[df_movies['release_date'].apply(is_month_year_only)]
@@ -334,6 +344,7 @@ def family_trends_function(family_movies):
 
     plt.tight_layout()
     plt.show()
+    return family_trends
 
 def family_trends_regression(family_trends):
     slope, intercept, r_value, p_value, std_err = linregress(family_trends['month'], family_trends['revenue'])
@@ -356,7 +367,7 @@ def family_trends_regression_plot(family_trends):
     plt.title('Regression Plot of Revenue vs Month for Family Movies')
     plt.xlabel('Month')
 
-def family_trends_correlation_plot(family_trends):
+def family_trends_correlation_plot(family_movies):
 
     december_period = family_movies[family_movies['month'] == 12]
 
@@ -396,7 +407,7 @@ def family_trends_correlation_plot(family_trends):
     plt.show()
     return december_trends
 
-def family_trends_correlation_plot(december_trends):
+def family_trends_correlation_plot_2(december_trends):
     # Find the days with the highest revenue and movie count
     top_revenue_days = december_trends.sort_values(by='revenue', ascending=False).head(4)
     top_movie_count_days = december_trends.sort_values(by='genres', ascending=False).head(4)
@@ -543,6 +554,8 @@ def halloween_trends(df_full_date):
     plt.tight_layout()
     plt.show()
 
+    return horror_movies_october
+
 
 def halloween_highest_revenue(horror_trends):
     # Identify peak days for revenue and movie count
@@ -553,7 +566,7 @@ def halloween_highest_revenue(horror_trends):
     top_revenue_days.head()
     return top_movie_count_days, top_revenue_days
 
-def halloween_ttest(horror_movies_october, top_movie_count_days, top_revenue_days):
+def halloween_ttest_2(horror_movies_october, top_movie_count_days, top_revenue_days):
     print("\nTop 4 Days with Highest Movie Count in October:")
     top_movie_count_days.head()
 
@@ -628,6 +641,7 @@ def valentine_analysis(df_full_date):
     plt.ylabel('Number of Movies')
     plt.xticks(rotation=45)
     plt.show()
+    return valentine_movies
 
 
 
@@ -732,7 +746,7 @@ def valentine(valentines_period):
     plt.tight_layout()
     plt.show()
 
-def valentine_ttest(valentines_period, top_revenue_days):
+def valentine_ttest_2(valentines_period, top_revenue_days):
     top_revenue_days_data = valentines_period[valentines_period['day'].isin(top_revenue_days['day'])]
 
     top_revenue_days_trends = top_revenue_days_data.groupby('day').agg({
