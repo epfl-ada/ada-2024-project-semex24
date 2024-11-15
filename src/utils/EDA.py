@@ -26,26 +26,36 @@ def plot_top_10_countries(movies_df):
 
 # 2. Function to plot the most popular movie languages
 def plot_popular_languages(movies_df):
-    language_counts = movies_df['Original Language'].value_counts().head(10)
+    
+    movies_df['languages'] = movies_df['languages'].apply(
+        lambda x: [
+            y if y == 'Silent film' else  # leave 'Silent film' unchanged
+            y[:-8] + 'Language' if y.lower().endswith('language') else  # if it ends in 'language' make it 'Language'
+            y + ' Language'  # add ' Language' if it doesn't end with 'language'
+            for y in x] if isinstance(x, list) else x
+    )
+    # Now do the same plot again
+    language_counts = movies_df['languages'].explode().value_counts()
+    top_10_languages = language_counts.head(10)
 
     plt.figure(figsize=(10, 6))
-    sns.barplot(x=language_counts.index, y=language_counts.values)
-    plt.title('Most Popular Movie Languages')
+    sns.barplot(x=top_10_languages.index, y=top_10_languages.values)
+    plt.title('Top 10 Languages with the Most Movies')
     plt.xlabel('Language')
     plt.ylabel('Number of Movies')
     plt.xticks(rotation=45)
-    plt.tight_layout()
     plt.show()
 
 # 3. Function to plot the distribution of movie budgets
 def plot_budget_distribution(movies_df):
     plt.figure(figsize=(10, 6))
-    sns.histplot(movies_df['Budget'], bins=50, kde=True)
+    sns.histplot(np.log1p(movies_df['budget']), bins=30, kde=True)
     plt.title('Distribution of Movie Budgets')
-    plt.xlabel('Budget')
+    plt.xlabel('Log of budget')
     plt.ylabel('Frequency')
-    plt.tight_layout()
+    plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]])
     plt.show()
+
 
 # 4. Function to plot movie budgets in log scale (handling zero budgets)
 def plot_log_scale_budget_distribution(movies_df):
