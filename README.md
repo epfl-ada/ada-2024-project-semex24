@@ -1,16 +1,16 @@
 # **Cinema Through Time: How Seasons and History Shape the Movies We Watch**
 
-## **Table of Contents**
-1. [Abstract](#abstract)  
-2. [Research Questions](#research-questions)  
-3. [Additional Dataset](#Additional-Datasets)  
-4. [Methods](#methods)  
-5. [Proposed Timeline](#proposed-timeline)  
-6. [Organization Within the Team](#organization-within-the-team)  
-7. [Questions for TAs](#questions-for-tas) 
-
 ## **Abstract**
 Our project explores how significant historical events and seasonal trends influence the films we watch, reflecting society’s evolving narratives. By examining the impact of events like World Wars, economic recessions, and modern-day challenges, we aim to uncover patterns in how cinema adapts to cultural shifts. This study analyzes genre popularity across seasons, such as horror in October and family films in December, to determine whether specific genres align with particular times of the year. Our goal is to reveal how historical context and seasonal preferences shape the evolution of cinema and connect audiences to stories that resonate with societal highs and lows.
+
+## **Table of Contents**
+1. [Research Questions](#research-questions)  
+2. [Additional Dataset](#Additional-Datasets)  
+3. [Methods](#methods)  
+4. [Proposed Timeline](#proposed-timeline)  
+5. [Organization Within the Team](#organization-within-the-team)  
+6. [Questions for TAs](#questions-for-tas) 
+
 
 ## **Research Questions**
 
