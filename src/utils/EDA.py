@@ -11,6 +11,18 @@ def plot_missing_values(movies_df):
     plt.title('Missing value in the dataset')
     plt.show()
 
+
+def number_categories(movies_df):
+    all_genres = set()
+    for genres_list in movies_df['genres']:
+        if isinstance(genres_list, list):
+            all_genres.update(genres_list)
+
+    all_genres_list = sorted(all_genres)
+
+    print("Number of genres:", len(all_genres_list))
+    print(all_genres_list)
+
 # 1. Function to plot top movie-producing countries
 def plot_top_10_countries(movies_df):
     country_counts = movies_df['countries'].explode().value_counts() #since we can have more than 1 country in countries column
