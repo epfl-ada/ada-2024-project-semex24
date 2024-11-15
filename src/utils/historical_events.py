@@ -487,7 +487,7 @@ def action_movies_timeline(movies_df):
     plt.show()
 
 
-def action_movies_timeline(movies_df):
+def action_movies_info(movies_df):
     #Now we get the number for the percentage printed out
     action_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Action' in x if isinstance(x, list) else False)]
 
@@ -1134,45 +1134,45 @@ def documentary_1991_2006_linear(movies_df):
 
 def documentary_1991_2006_polynomial(movies_df):
     # First we get the documentary movies, count them and obtain the percentage
-documentary_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Documentary' in x if isinstance(x, list) else False)]
-documentary_count_by_year = documentary_movies_df.groupby('release_year').size()
-total_movies_by_year = movies_df.groupby('release_year').size()
-documentary_percentage_by_year = (documentary_count_by_year / total_movies_by_year * 100).dropna()
+    documentary_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Documentary' in x if isinstance(x, list) else False)]
+    documentary_count_by_year = documentary_movies_df.groupby('release_year').size()
+    total_movies_by_year = movies_df.groupby('release_year').size()
+    documentary_percentage_by_year = (documentary_count_by_year / total_movies_by_year * 100).dropna()
 
-#Then we adjust the period to focus our function
-pre_post_911_years = range(1990, 2009)
-documentary_percentage_pre_post_911 = documentary_percentage_by_year[documentary_percentage_by_year.index.isin(pre_post_911_years)]
+    #Then we adjust the period to focus our function
+    pre_post_911_years = range(1990, 2009)
+    documentary_percentage_pre_post_911 = documentary_percentage_by_year[documentary_percentage_by_year.index.isin(pre_post_911_years)]
 
-documentary_percentage_pre_post_911 = documentary_percentage_pre_post_911.reindex(pre_post_911_years, fill_value=0)
+    documentary_percentage_pre_post_911 = documentary_percentage_pre_post_911.reindex(pre_post_911_years, fill_value=0)
 
-# Later we adjust our data for our function
-years = np.array(documentary_percentage_pre_post_911.index)
-percentages = documentary_percentage_pre_post_911.values
+    # Later we adjust our data for our function
+    years = np.array(documentary_percentage_pre_post_911.index)
+    percentages = documentary_percentage_pre_post_911.values
 
-# We apply a 2nd degree polynomial function (we used second because 3rd displayed the same plot)
-degree = 2
-poly_model = Polynomial.fit(years, percentages, degree)
+    # We apply a 2nd degree polynomial function (we used second because 3rd displayed the same plot)
+    degree = 2
+    poly_model = Polynomial.fit(years, percentages, degree)
 
-trendline = poly_model(years)
+    trendline = poly_model(years)
 
-plt.figure(figsize=(10, 6))
-plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
-plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1991 to 2006')
-plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
+    plt.figure(figsize=(10, 6))
+    plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
+    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1991 to 2006')
+    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
 
-plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+    plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
 
-plt.ylim(0, 20)
+    plt.ylim(0, 20)
 
-plt.xlabel('Year')
-plt.ylabel('Percentage of Documentary Movies')
-plt.title('Trend in Documentary Movies from 1991 to 2006')
-plt.legend()
-plt.grid(True)
-plt.show()
+    plt.xlabel('Year')
+    plt.ylabel('Percentage of Documentary Movies')
+    plt.title('Trend in Documentary Movies from 1991 to 2006')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
-# Finaly we display the function
-coefficients = poly_model.convert().coef
-poly_function_str = "f(x) = " + " + ".join(f"{coef:.3f}*x^{i}" if i > 0 else f"{coef:.3f}" for i, coef in enumerate(coefficients))
-print("Polynomial Function:", poly_function_str)
+    # Finaly we display the function
+    coefficients = poly_model.convert().coef
+    poly_function_str = "f(x) = " + " + ".join(f"{coef:.3f}*x^{i}" if i > 0 else f"{coef:.3f}" for i, coef in enumerate(coefficients))
+    print("Polynomial Function:", poly_function_str)
 
