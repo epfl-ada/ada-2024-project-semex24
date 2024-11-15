@@ -14,7 +14,8 @@ def parse_genres(x):
     return x
 
 
-def feature_engineering_movies(movies_df):
+def feature_engineering_movies(df):
+    movies_df = df.copy()
     movies_df['release_date'] = pd.to_datetime(movies_df['release_date'], errors='coerce')
     movies_df['release_year'] = movies_df['release_date'].dt.year
     movie_count_by_year = movies_df['release_year'].value_counts().sort_index()
@@ -23,3 +24,5 @@ def feature_engineering_movies(movies_df):
     # Converting to lists genre column, country and language column
     movies_df['countries'] = movies_df['countries'].str.split(', ')
     movies_df['languages'] = movies_df['languages'].str.split(', ')
+
+    return movies_df
