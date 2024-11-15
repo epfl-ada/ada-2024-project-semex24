@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+def plot_missing_values()
+    plt.figure(figsize=(10, 6))
+    sns.heatmap(movies_df.isnull(), cbar=False, cmap='viridis', yticklabels=False)
+    plt.title('Missing value in the dataset')
+    plt.show()
 
 # 1. Function to plot top movie-producing countries
 def plot_top_10_countries(movies_df):
