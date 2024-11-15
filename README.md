@@ -69,14 +69,22 @@ https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies?r
 
 ## **Organization Within the Team**
 
-- **Dataset Preparation**: Milica & Marija - Integrate datasets, address missing values.
-- **Data Exploration**: Marija & Eugenio - Conduct EDA and create visualizations.
-- **Seasonal Trends Analysis**: Milica & Marija - Analyze genre popularity by season.
-- **Historical Impact Analysis**: Daniela & Marija - Explore genre shifts due to historical events.
-- **Revenue Analysis**: Andrea & Eugenio - Perform time series analysis on revenue.
-- **Clustering Analysis**: Milica & Eugenio - Analyze genre and country preferences.
-- **Sentiment Analysis**: Daniela & Andrea - Analyze plot sentiment.
-- **Final Report and Visualization**: Marija, Andrea & Daniela - Develop visualizations and finalize the report.
+- **Dataset Preparation**: Milica, Marija & Eugenio 
+   - Integrate datasets and address missing values.
+- **Data Exploration**: Marija, Andrea & Daniela 
+   - Conduct EDA and create initial visualizations to identify trends.
+- **Seasonal Trends Analysis**: Milica & Eugenio 
+   - Analyze genre popularity by season, using statistical methods.
+- **Historical Impact Analysis**: Daniela & Andrea 
+   - Explore genre shifts due to historical events and perform regression analysis.
+- **Revenue Analysis**: Marija & Milica 
+   - Apply time series analysis to examine revenue patterns over time.
+- **Clustering Analysis**: Eugenio & Andrea 
+   - Conduct clustering analysis for genre and regional preferences.
+- **Sentiment Analysis**: Daniela, Eugenio & Marija 
+   - Perform sentiment analysis on plot summaries to assess emotional tone.
+- **Final Report and Visualization**: Milica, Marija & Andrea
+    - Compile the final report and create interactive visualizations to communicate findings.
 
 ## **Questions for TAs**  
 - Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
