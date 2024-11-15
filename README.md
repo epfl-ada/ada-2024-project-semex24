@@ -47,7 +47,6 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 
 8. **Data Visualization**: We’ll create interactive visualizations to illustrate genre-season relationships, revenue trends, and historical impact on cinema, using heatmaps and bubble charts to communicate our findings clearly.
 
-These methods will allow us to address the research questions by leveraging the *CMU Personas* and "Base de dato Servia" datasets, providing a thorough analysis of how historical events and seasons shape the film industry.
 
 ## **Proposed Timeline**
 
