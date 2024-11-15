@@ -66,7 +66,7 @@ def plot_popular_languages(movies_df):
 def plot_log_scale_budget_distribution(movies_df):
     plt.figure(figsize=(10, 6))
     sns.histplot(np.log1p(movies_df['budget']), bins=30, kde=True)
-    plt.title('Distribution of Movie Vudgets')
+    plt.title('Distribution of Movie Budgets')
     plt.xlabel('Log of budget')
     plt.ylabel('Frequency')
     plt.xticks(ticks=np.log1p([1e4,1e5,1e6, 1e7, 1e8, 1e9]), labels=[f'{int(x)}' for x in [1e4,1e5,1e6, 1e7, 1e8, 1e9]])
