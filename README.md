@@ -48,6 +48,7 @@ ADA-2024-PROJECT-SEMEX24/
 
 
 
+
 ## **Research Questions**
 
 1. **How have major historical events shaped the narratives and genres of movies over time?**
