@@ -662,8 +662,8 @@ def top_days(valentines_trends):
 
     # Display the top days
     print("Top 4 Days with Highest Average Revenue in Valentine's Week:")
-    top_revenue_days.head()
-    return top_movie_count_days
+    top_revenue_days.head(4)
+    return top_revenue_days
 
 
 def top_count_days(top_movie_count_days):
