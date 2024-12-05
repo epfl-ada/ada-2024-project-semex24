@@ -13,14 +13,12 @@ from scipy.stats import linregress
 from scipy.stats import pearsonr
 
 def is_month_year_only(date_str):
-
     month_year_pattern = r'\d{4}-\d{2}'
     return bool(re.match(month_year_pattern, str(date_str)))
+    
 def is_full_date(date_str):
-
     full_date_pattern = r'\d{4}-\d{2}-\d{2}'
     return bool(re.match(full_date_pattern, str(date_str)))
-
 
 def getdf_filtered(movies_df):
     df_filtered = movies_df.dropna(subset=['release_year'])
@@ -31,30 +29,27 @@ def getdf_filtered(movies_df):
     df_filtered[df_filtered['popularity'] > percentile_95] = np.nan
     return df_filtered
 
-
 def date_pattern(df_movies):
-
     df_seasons = df_movies[df_movies['release_date'].apply(is_month_year_only)]
     print(f"Number of movies that have at least month and a year: {df_seasons.shape[0]}")
     print(f"Number of movies that have any date (but not NaN): {df_movies.shape[0]}")
     print(f"Number of movies that have day, month and a year: {df_seasons[df_seasons['release_date'].apply(is_full_date)].shape[0]}")
     return df_seasons
 
+def find_season(date_str):
+    if is_full_date(date_str) or is_month_year_only(date_str):
+        month = date_str.month  #get just the month
+        if month in [12, 1, 2]:
+            return 'Winter'
+        elif month in [3, 4, 5]:
+            return 'Spring'
+        elif month in [6, 7, 8]:
+            return 'Summer'
+        elif month in [9, 10, 11]:
+            return 'Autumn'
+    return None
 
 def seasonal_analysis(df_seasons):
-    def find_season(date_str):
-        if is_full_date(date_str) or is_month_year_only(date_str):
-            month = date_str.month  #get just the month
-            if month in [12, 1, 2]:
-                return 'Winter'
-            elif month in [3, 4, 5]:
-                return 'Spring'
-            elif month in [6, 7, 8]:
-                return 'Summer'
-            elif month in [9, 10, 11]:
-                return 'Autumn'
-        return None
-
     df_seasons.loc[:, 'season'] = df_seasons['release_date'].apply(find_season)
     df_summer = df_seasons[df_seasons['season']=='Summer']
     df_autumn = df_seasons[df_seasons['season']=='Autumn']
@@ -79,7 +74,7 @@ def plot_seasons(df_seasons):
 def plot_seasons_revenues(df_seasons):
     plt.figure(figsize=(10, 6))
     sns.barplot(x="season", y="revenue", data=df_seasons)
-    plt.title('revenues of movies through seasons')
+    plt.title('Revenues of movies through seasons')
     plt.xlabel('Season')
     plt.ylabel('revenue')
     plt.show()    
@@ -108,8 +103,7 @@ def plot_seasons_runtime(df_seasons):
     plt.ylabel('Runtime')
     plt.show()    
 
-def plot_seasons_popularity(df_seasons):
-  
+def plot_seasons_popularity(df_seasons): 
     plt.figure(figsize=(10, 6))
     sns.barplot(x="season", y="popularity", data=df_seasons)
     plt.title('Popularity score of movies through seasons')
@@ -120,7 +114,6 @@ def plot_seasons_popularity(df_seasons):
 
 def plot_genre_distribution(df_seasons):
     df_seasons_exploded = df_seasons.explode('genres')
-
     plt.figure(figsize=(12, 8))
     sns.countplot(x='season', hue='genres', data=df_seasons_exploded, order=['Summer', 'Autumn', 'Winter', 'Spring'])
     plt.title('Genre Distribution Across Seasons')
@@ -130,7 +123,6 @@ def plot_genre_distribution(df_seasons):
     plt.show()
 
 def plot_genre_season_heatmap(df_seasons):
-
     df_seasons_exploded = df_seasons.explode('genres')
     genre_season_pivot = df_seasons_exploded.pivot_table(index='genres', columns='season', aggfunc='size', fill_value=0)
     plt.figure(figsize=(12, 8))
@@ -141,7 +133,6 @@ def plot_genre_season_heatmap(df_seasons):
     plt.show()    
 
 def plot_top_genres_per_season(df_seasons):
-
     df_seasons_exploded = df_seasons.explode('genres')
     genre_counts = df_seasons_exploded.groupby(['season', 'genres']).size().reset_index(name='count')
     top_genres_per_season = genre_counts.sort_values(['season', 'count'], ascending=[True, False])
@@ -181,15 +172,12 @@ def genre_season_performance(df_seasons):
         'revenue': 'mean',
         'popularity': 'mean'
     }).reset_index()
-    
     print(genre_season_performance.head())
     return genre_season_performance
 
 def plot_genre_season_performance(genre_season_performance):
-  
     revenue_pivot = genre_season_performance.pivot(index='genres', columns='season', values='revenue')
     popularity_pivot = genre_season_performance.pivot(index='genres', columns='season', values='popularity')
-
 
     plt.figure(figsize=(12, 6))
     sns.heatmap(revenue_pivot, annot=True, cmap="YlGnBu", fmt='.2f', cbar=True)
@@ -206,22 +194,16 @@ def plot_genre_season_performance(genre_season_performance):
     plt.show()
 
 def revenue_ttest(df_seasons):
-
     spring_revenue = df_seasons[(df_seasons['genres'].apply(lambda x: 'Fantasy' in x or 'Science Fiction' in x)) & (df_seasons['season'] == 'Spring')]['revenue']
     other_seasons_revenue = df_seasons[(df_seasons['genres'].apply(lambda x: 'Fantasy' in x or 'Science Fiction' in x)) & (df_seasons['season'] != 'Spring')]['revenue']
-
     t_stat, p_value = ttest_ind(spring_revenue.dropna(), other_seasons_revenue.dropna())
-
     print(f"T-statistic: {t_stat}, p-value: {p_value}")
 
 def multiple_regression(df_seasons):
-
     # Exploding the genres column (so that each genre is a separate row)
     df_exploded = df_seasons.explode('genres')
-
     # Create a multiple linear regression model: revenue ~ season + genre + season:genre
     model = ols('revenue ~ C(season) + C(genres) + C(season):C(genres)', data=df_exploded).fit()
-
     # Print the summary to get the coefficients and p-values
     print(model.summary())
 
@@ -247,7 +229,6 @@ def holiday_analysys(df_filtered):
     # Use English speaking movies only
     df_month_year = df_month_year[df_month_year['languages'].apply(lambda x: 'English Language' in x if isinstance(x, list) else False)]
     df_full_date = df_full_date[df_full_date['languages'].apply(lambda x: 'English Language' in x if isinstance(x, list) else False)]
-
 
     # Let's see the distribution of movies through months
     plt.figure(figsize=(10, 6))
@@ -286,7 +267,6 @@ def family_movies(df_full_date):
     return family_movies
 
 def groupby_year_month(family_movies):
-
     # Grouping by year and month
     monthly_family_count = family_movies.groupby(['year', 'month']).size().reset_index(name='movie_count')
     december_count = monthly_family_count[monthly_family_count['month'] == 12]['movie_count']
@@ -301,10 +281,8 @@ def groupby_year_month(family_movies):
             t_stat, p_value = ttest_ind(december_count, other_month_count, equal_var=False)
             p_values[month] = p_value
 
-
     for month, p_value in p_values.items():
         print(f"Comparison of December with Month {month}: p-value = {p_value}")
-
 
     significant_months = [month for month, p_value in p_values.items() if p_value < 0.05]
     if significant_months:
@@ -354,7 +332,6 @@ def family_trends_regression(family_trends):
     print(f"P-value: {p_value}")
 
 def family_trends_correlation(family_trends):
-    
     slope, intercept, r_value, p_value, std_err = linregress(family_trends['month'], family_trends['genres'])
     print(f"Slope: {slope}")
     print(f"Intercept: {intercept}")
@@ -368,14 +345,11 @@ def family_trends_regression_plot(family_trends):
     plt.xlabel('Month')
 
 def family_trends_correlation_plot(family_movies):
-
     december_period = family_movies[family_movies['month'] == 12]
-
     december_trends = december_period.groupby(['month', 'day']).agg({
         'revenue': 'mean',
         'genres': 'size'  # Count of movies per day
     }).reset_index()
-
 
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
@@ -397,12 +371,9 @@ def family_trends_correlation_plot(family_movies):
         x='day', y='genres', data=december_trends, ax=ax2, color=color2, linestyle='--', label='Movie Count (December)', marker='x'
     )
     ax2.tick_params(axis='y', labelcolor=color2)
-
     ax1.grid(True)
-
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
-
     plt.tight_layout()
     plt.show()
     return december_trends
@@ -419,8 +390,6 @@ def family_trends_correlation_plot_2(december_trends):
     print(top_movie_count_days)
 
 def  december_correlation_clean(december_trends):
-
-
     december_trends_clean = december_trends.replace([np.inf, -np.inf], np.nan).dropna(subset=['revenue', 'genres'])
 
     # Pearson correlation between revenue and movie count and p value
@@ -441,10 +410,6 @@ def halloween_analysis(df_full_date):
     plt.show()
 
     return horror_movies
-
-
-    
-
 
 
 def halloween_ttest(horror_movies):
@@ -472,7 +437,6 @@ def halloween_ttest(horror_movies):
 
 
 def halloween_trends_function(horror_movies):
-
     horror_trends = horror_movies.groupby('month').agg({
         'revenue': 'mean',
         'genres': 'size' 
@@ -490,19 +454,14 @@ def halloween_trends_function(horror_movies):
     ax1.tick_params(axis='y', labelcolor=color1)
     ax1.set_xticks(range(1, 13))
     ax1.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], rotation=45)
-
-
     ax2 = ax1.twinx()
     color2 = 'tab:green'
     ax2.set_ylabel('Movie Count', color=color2)
     sns.lineplot(x='month', y='genres', data=horror_trends, ax=ax2, color=color2, label='Movie Count', marker='o')
     ax2.tick_params(axis='y', labelcolor=color2)
-
     ax1.grid(True)
-
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
-
     plt.tight_layout()
     plt.show()
 
@@ -521,7 +480,6 @@ def halloween_trends(df_full_date):
         df_full_date['genres'].apply(lambda x: 'Horror' in x if isinstance(x, list) else False) & 
         (df_full_date['month'] == 10)
     ]
-
     horror_trends = horror_movies_october.groupby(['month', 'day']).agg({
         'revenue': 'mean',
         'genres': 'size'  
@@ -530,24 +488,20 @@ def halloween_trends(df_full_date):
     # Plotting 
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
-
     color1 = 'tab:blue'
     ax1.set_title('Revenue vs Count of Horror Movies in October', fontsize=16)
     ax1.set_xlabel('Date (Month-Day)', fontsize=14)
     ax1.set_ylabel('Average Revenue', color=color1)
     sns.lineplot(x='day', y='revenue', data=horror_trends, ax=ax1, color=color1, label='Avg Revenue', marker='o')
     ax1.tick_params(axis='y', labelcolor=color1)
-
     horror_trends['date'] = horror_trends.apply(lambda row: f"{row['month']}-{row['day']}", axis=1)
     ax1.set_xticks(horror_trends['day'])
     ax1.set_xticklabels([f'Oct-{i}' for i in range(1, 32)], rotation=45)
-
     ax2 = ax1.twinx()
     color2 = 'tab:green'
     ax2.set_ylabel('Movie Count', color=color2)
     sns.lineplot(x='day', y='genres', data=horror_trends, ax=ax2, color=color2, label='Movie Count', marker='o')
     ax2.tick_params(axis='y', labelcolor=color2)
-
     ax1.grid(True)
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
@@ -571,8 +525,6 @@ def halloween_ttest_2(horror_movies_october, top_movie_count_days, top_revenue_d
     top_movie_count_days.head()
 
     top_revenue_days_data = horror_movies_october[horror_movies_october['day'].isin(top_revenue_days['day'])]
-
-
     top_revenue_days_trends = top_revenue_days_data.groupby('day').agg({
         'revenue': 'mean'
     }).reset_index()
@@ -630,7 +582,6 @@ def horror_trends_regression(horror_trends):
 
 
 def valentine_analysis(df_full_date):
-
     valentine_movies = df_full_date[df_full_date['genres'].apply(lambda x: any(genre in x for genre in [ 'Romance']) if isinstance(x, list) else False)]
 
     # Let's see the distribution of romantic movies through months
@@ -642,8 +593,6 @@ def valentine_analysis(df_full_date):
     plt.xticks(rotation=45)
     plt.show()
     return valentine_movies
-
-
 
 def valentine_ttest(valentine_movies):
     monthly_valentine_count = valentine_movies.groupby(['year', 'month']).size().reset_index(name='movie_count')
@@ -666,7 +615,6 @@ def valentine_ttest(valentine_movies):
         print(f"February has significantly more Romance movie releases than the following months: {significant_months}")
     else:
         print("February does not have significantly more Romance movie releases than any other month.")
-
 
 
 def valentine_trends(df_full_date):
@@ -692,22 +640,17 @@ def valentine_trends(df_full_date):
     ax1.set_ylabel('Average Revenue', color=color1)
     sns.lineplot(x='day', y='revenue', data=valentines_trends, ax=ax1, color=color1, label='Avg Revenue', marker='o')
     ax1.tick_params(axis='y', labelcolor=color1)
-
     valentines_trends['date'] = valentines_trends.apply(lambda row: f"{row['month']}-{row['day']}", axis=1)
     ax1.set_xticks(valentines_trends['day'])
     ax1.set_xticklabels([f'Feb-{i}' for i in range(1, 29)], rotation=45)
-
     ax2 = ax1.twinx()
     color2 = 'tab:green'
     ax2.set_ylabel('Movie Count', color=color2)
     sns.lineplot(x='day', y='genres', data=valentines_trends, ax=ax2, color=color2, label='Movie Count', marker='o')
     ax2.tick_params(axis='y', labelcolor=color2)
-
     ax1.grid(True)
-
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
-
     plt.tight_layout()
     plt.show()
     return valentines_trends, valentines_period
@@ -738,11 +681,9 @@ def valentine(valentines_period):
 
     plt.figure(figsize=(12, 6))
     sns.heatmap(heatmap_data, annot=True, cmap='Blues', fmt='.2f', linewidths=0.5, cbar_kws={'label': 'Average Revenue'})
-
     plt.title('Heatmap of Average Revenue for Romance Movies (Valentine\'s Week)', fontsize=16)
     plt.xlabel('Month', fontsize=14)
     plt.ylabel('Day of February', fontsize=14)
-
     plt.tight_layout()
     plt.show()
 
