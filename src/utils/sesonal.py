@@ -21,12 +21,30 @@ def is_full_date(date_str):
     return bool(re.match(full_date_pattern, str(date_str)))
 
 def getdf_filtered(movies_df):
+
+    # dropna release_year
     df_filtered = movies_df.dropna(subset=['release_year'])
-    # How many unique values for year are there?
     df_filtered = df_filtered[df_filtered['release_year'] >= 1800]
+
+    # percentile popularity
     percentile_95 = df_filtered['popularity'].quantile(0.95)
-    df_filtered = movies_df.dropna(subset=['release_year'])
     df_filtered[df_filtered['popularity'] > percentile_95] = np.nan
+
+    #percentile budget
+    percentile_2 = df_filtered['budget'].quantile(0.02)
+    df_filtered.loc[df_filtered['budget'] < percentile_2, 'budget'] = np.nan
+
+    #percentile revenue
+    percentile_01 = df_filtered['revenue'].quantile(0.001)
+    df_filtered[df_filtered['revenue'] < percentile_01] = np.nan
+
+    #percentile runtime
+    percentile_01 = df_filtered['runtime'].quantile(0.01)
+    df_filtered[df_filtered['runtime'] < percentile_01] = np.nan
+    percentile_99 = df_filtered['runtime'].quantile(0.999)
+    df_filtered[df_filtered['runtime'] > percentile_99] = np.nan
+
+    
     return df_filtered
 
 def date_pattern(df_movies):
