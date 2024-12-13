@@ -12,7 +12,7 @@ def sentiment_trend_over_time(merged_df, analyzer):
     average_sentiment_by_year = merged_df.groupby('year')['sentiment'].mean().reset_index()
 
     # Plot the sentiment trend over time
-    plt.plot(average_sentiment_by_year['year'], average_sentiment_by_year['sentiment'])
+    plt.plot(average_sentiment_by_year['year'], average_sentiment_by_year['sentiment'], color='#1ecbe1')
     plt.xlabel('Year')
     plt.ylabel('Average Sentiment (Compound Score)')
     plt.title('Sentiment Trend in Movies Over Time')
@@ -36,7 +36,7 @@ def statistics(merged_df):
 def sentiment_trend_with_historical_events(merged_df):
     average_sentiment_by_year = merged_df.groupby('year')['sentiment'].mean().reset_index()
     # Create the average sentiment trend plot over time
-    plt.plot(average_sentiment_by_year['year'], average_sentiment_by_year['sentiment'], label="Average Sentiment")
+    plt.plot(average_sentiment_by_year['year'], average_sentiment_by_year['sentiment'], label="Average Sentiment", color='#1ecbe1')
 
     # Mark historical events
     historical_events = {
@@ -53,7 +53,7 @@ def sentiment_trend_with_historical_events(merged_df):
     # Add vertical lines for the event years
     for event, year in historical_events.items():
         plt.axvline(x=year, color='red', linestyle='--', alpha=0.7)
-        plt.text(year, plt.ylim()[1]*0.9, event, rotation=90, verticalalignment='top', color='red', fontsize=8)
+        plt.text(year, plt.ylim()[1]*0.9, event, rotation=90, verticalalignment='top', color='#f0390f', fontsize=8)
 
     # Configure the plot
     plt.xlabel('Year')
@@ -146,7 +146,7 @@ def comparison_ww2(merged_df):
 
     # Plot the sentiment comparison
     plt.figure(figsize=(10, 6))
-    plt.bar(years, average_sentiments, color=['blue', 'red', 'green'])
+    plt.bar(years, average_sentiments, color=['#f0390f', '#f8c03f', '#1ecbe1'])
     plt.xlabel('Period')
     plt.ylabel('Average Sentiment (Compound Score)')
     plt.title('Comparison of Average Sentiment in Cinema During and Around World War II')
