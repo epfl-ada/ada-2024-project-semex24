@@ -17,13 +17,20 @@ def comparison_genres_war_periods(movies_df):
 
     # And finaly we plotted all the genres with their respectime amount of movies
     genre_comparison_df = pd.DataFrame({'WW1': ww1_genre_counts, 'Non-War': non_war_genre_counts, 'WW2': ww2_genre_counts}).fillna(0)
-    genre_comparison_df.plot(kind='bar', figsize=(14, 7))
-    plt.title("Comparison of genres During WW1, Non-War Period, and WW2")
-    plt.xlabel("Genres")
-    plt.ylabel("Frequency of Movies")
-    plt.legend(["WW1", "Non-War (1920-1938)", "WW2"])
+    genre_comparison_df.plot(
+        kind='bar', 
+        figsize=(14, 7), 
+        color=['#f0390f', '#f8c03f', '#1ecbe1'], 
+        edgecolor='none',
+        logy=True
+    )
+    plt.title("Comparison of Genres During WW1, Non-War Period, and WW2", pad=20)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Frequency of Movies (Log Scale)", labelpad=10)
+    plt.legend(["WW1", "Non-War (1920-1938)", "WW2"], title="Periods")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
     plt.show()
-
 
 
 def percentage_genres_war_periods(movies_df):
@@ -37,7 +44,7 @@ def percentage_genres_war_periods(movies_df):
     ww2_genre_counts = ww2_movies_df['genres'].explode().value_counts()
     non_war_genre_counts = non_war_movies_df['genres'].explode().value_counts()
 
-    # We calculated the percentages by dividung all the counts by the sum of each genre
+    # We calculated the percentages by dividing all the counts by the sum of each genre
     ww1_genre_percentages = (ww1_genre_counts / ww1_genre_counts.sum()) * 100
     ww2_genre_percentages = (ww2_genre_counts / ww2_genre_counts.sum()) * 100
     non_war_genre_percentages = (non_war_genre_counts / non_war_genre_counts.sum()) * 100
@@ -48,16 +55,25 @@ def percentage_genres_war_periods(movies_df):
         'WW2': ww2_genre_percentages
     }).fillna(0)
 
-    genre_comparison_df.plot(kind='bar', figsize=(14, 7))
-    plt.title("Percentage of genres During WW1, Non-War Period, and WW2")
-    plt.xlabel("Genres")
-    plt.ylabel("Percentage of Movies")
-    plt.legend(["WW1", "Non-War (1920-1938)", "WW2"])
+    genre_comparison_df.plot(
+        kind='bar', 
+        figsize=(14, 7), 
+        color=['#f0390f', '#f8c03f', '#1ecbe1'], 
+        edgecolor='none', 
+        logy=True
+    )
+    plt.title("Percentage of Genres During WW1, Non-War Period, and WW2", pad=20)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Percentage of Movies (Log Scale)", labelpad=10)
+    plt.legend(["WW1", "Non-War (1920-1938)", "WW2"], title="Periods")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
     plt.show()
 
 
+
 def percentage_genres_war_periods_all_movies(movies_df):
-    #We repeated the process from above with the difference of getting all the movies instead of only movies from 1920-138
+    # We repeated the process from above with the difference of getting all the movies instead of only movies from 1920-1938
 
     ww1_movies_df = movies_df[(movies_df['release_year'] >= 1914) & (movies_df['release_year'] <= 1918)]
     ww2_movies_df = movies_df[(movies_df['release_year'] >= 1939) & (movies_df['release_year'] <= 1945)]
@@ -77,13 +93,21 @@ def percentage_genres_war_periods_all_movies(movies_df):
         'WW2': ww2_genre_percentages
     }).fillna(0)
 
-    genre_comparison_percent_df.plot(kind='bar', figsize=(14, 7))
-    plt.title("Percentage of genres During WW1, All Movies, and WW2")
-    plt.xlabel("Genres")
-    plt.ylabel("Percentage of Movies")
-    plt.legend(["WW1", "All Movies", "WW2"])
+    genre_comparison_percent_df.plot(
+        kind='bar', 
+        figsize=(14, 7), 
+        color=['#f0390f', '#f8c03f', '#1ecbe1'], 
+        edgecolor='none', 
+        logy=True
+    )
+    plt.title("Percentage of Genres During WW1, All Movies, and WW2", pad=20)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Percentage of Movies (Log Scale)", labelpad=10)
+    plt.legend(["WW1", "All Movies", "WW2"], title="Periods")
+    plt.xticks(rotation=45)
     plt.tight_layout()
     plt.show()
+
 
 
 def genres_over_time(movies_df):
@@ -100,36 +124,38 @@ def genres_over_time(movies_df):
     for genre in genre_percentage_by_year.columns:
         plt.plot(genre_percentage_by_year.index, genre_percentage_by_year[genre], label=genre)
 
-    plt.title("Percentage of genres Over Time (Respect to All Movies)")
-    plt.xlabel("Year")
-    plt.ylabel("Percentage of Movies")
+    plt.title("Percentage of Genres Over Time (Respect to All Movies)", pad=20)
+    plt.xlabel("Year", labelpad=10)
+    plt.ylabel("Percentage of Movies", labelpad=10)
     plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
     plt.tight_layout()
 
     plt.show()
 
 
+
 def number_movies(movies_df):
     movie_count_by_year = movies_df['release_year'].value_counts().sort_index()
     plt.figure(figsize=(10, 5))
-    plt.plot(movie_count_by_year.index, movie_count_by_year.values, marker='o')
-    plt.xlabel('Year of release')
-    plt.ylabel('Number of movies')
-    plt.title('Number of movies released by year')
-    plt.grid(True)
+    plt.plot(movie_count_by_year.index, movie_count_by_year.values, marker='o', linestyle='-', color='#f0390f')
+    plt.xlabel('Year of Release', labelpad=10)
+    plt.ylabel('Number of Movies', labelpad=10)
+    plt.title('Number of Movies Released by Year', pad=15)
+    plt.grid(visible=True, linestyle='--', linewidth=0.7, alpha=0.7)
+    plt.tight_layout()
     plt.show()
 
 
-def number_movies_1900_1925(movies_df):
-    # We created a dataframe only for movies between 1900-1925 and repeated the steps from above
+def number_movies_1900_1950(movies_df):
+    # We created a dataframe only for movies between 1900-1950 and repeated the steps from above
     movie_count_by_year = movies_df['release_year'].value_counts().sort_index()
     filtered_movie_count = movie_count_by_year[(movie_count_by_year.index >= 1900) & (movie_count_by_year.index <= 1950)]
 
     plt.figure(figsize=(10, 5))
-    plt.plot(filtered_movie_count.index, filtered_movie_count.values, marker='o')
+    plt.plot(filtered_movie_count.index, filtered_movie_count.values, marker='o', color='#f0390f')
     plt.xlabel('Year of release')
     plt.ylabel('Number of movies')
-    plt.title('Number of movies released by year (1900-1925)')
+    plt.title('Number of movies released by year (1900-1950)')
     plt.grid(True)
     plt.show()
 
@@ -144,13 +170,9 @@ def number_movies_war(movies_df):
 
 
 def genre_comparison_war_period(movies_df):
-    ww1_movies_df = movies_df[(movies_df['release_year'] >= 1914) & (movies_df['release_year'] <= 1918)]
-    ww2_movies_df = movies_df[(movies_df['release_year'] >= 1939) & (movies_df['release_year'] <= 1945)]
-    all_movies_df = movies_df
-    # Used the same code as before but removed the part for WW1
+    # WW2 and Non-War period genre comparison (Frequency)
     ww2_movies_df = movies_df[(movies_df['release_year'] >= 1939) & (movies_df['release_year'] <= 1945)]
     non_war_movies_df = movies_df[(movies_df['release_year'] >= 1920) & (movies_df['release_year'] <= 1938)]
-    all_movies_df = movies_df  # All movies in the dataset
 
     ww2_genre_counts = ww2_movies_df['genres'].explode().value_counts()
     non_war_genre_counts = non_war_movies_df['genres'].explode().value_counts()
@@ -161,18 +183,19 @@ def genre_comparison_war_period(movies_df):
     }).fillna(0)
 
     plt.figure(figsize=(14, 7))
-    genre_comparison_df.plot(kind='bar')
-    plt.title("Comparison of genres during WW2 and Non-War Period")
-    plt.xlabel("Genres")
-    plt.ylabel("Frequency of Movies")
+    genre_comparison_df.plot(kind='bar', color=['#f0390f', '#f8c03f', '#1ecbe1'])
+    plt.title("Comparison of Genres During WW2 and Non-War Period", pad=15)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Frequency of Movies", labelpad=10)
     plt.legend(["Non-War (1920-1938)", "WW2"])
     plt.tight_layout()
+    plt.yscale('log')
     plt.show()
 
-    ww1_genre_counts = ww1_movies_df['genres'].explode().value_counts()
-    ww2_genre_counts = ww2_movies_df['genres'].explode().value_counts()
+    # WW2 and Non-War period genre comparison (Percentage)
+    ww1_movies_df = movies_df[(movies_df['release_year'] >= 1914) & (movies_df['release_year'] <= 1918)]
 
-    ww1_genre_percentages = (ww1_genre_counts / ww1_genre_counts.sum()) * 100
+    ww1_genre_counts = ww1_movies_df['genres'].explode().value_counts()
     ww2_genre_percentages = (ww2_genre_counts / ww2_genre_counts.sum()) * 100
     non_war_genre_percentages = (non_war_genre_counts / non_war_genre_counts.sum()) * 100
 
@@ -182,17 +205,19 @@ def genre_comparison_war_period(movies_df):
     }).fillna(0)
 
     plt.figure(figsize=(14, 7))
-    genre_comparison_percent_df.plot(kind='bar')
-    plt.title("Percentage of genres during WW2 and Non-War Period")
-    plt.xlabel("Genres")
-    plt.ylabel("Percentage of Movies")
+    genre_comparison_percent_df.plot(kind='bar', color=['#f0390f', '#f8c03f', '#1ecbe1'])
+    plt.title("Percentage of Genres During WW2 and Non-War Period", pad=15)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Percentage of Movies", labelpad=10)
     plt.legend(["Non-War (1920-1938)", "WW2"])
     plt.tight_layout()
+    plt.yscale('log')
     plt.show()
 
+    # WW2 and All Movies genre comparison (Percentage)
+    all_movies_df = movies_df
     all_genre_counts = all_movies_df['genres'].explode().value_counts()
 
-    ww2_genre_percentages = (ww2_genre_counts / ww2_genre_counts.sum()) * 100
     all_genre_percentages = (all_genre_counts / all_genre_counts.sum()) * 100
 
     genre_comparison_percent_all_df = pd.DataFrame({
@@ -201,45 +226,58 @@ def genre_comparison_war_period(movies_df):
     }).fillna(0)
 
     plt.figure(figsize=(14, 7))
-    genre_comparison_percent_all_df.plot(kind='bar')
-    plt.title("Percentage of genres of All Movies, and WW2 movies")
-    plt.xlabel("Genres")
-    plt.ylabel("Percentage of Movies")
+    genre_comparison_percent_all_df.plot(kind='bar', color=['#f0390f', '#f8c03f', '#1ecbe1'])
+    plt.title("Percentage of Genres of All Movies and WW2 Movies", pad=15)
+    plt.xlabel("Genres", labelpad=10)
+    plt.ylabel("Percentage of Movies", labelpad=10)
     plt.legend(["All Movies", "WW2"])
     plt.tight_layout()
+    plt.yscale('log')
     plt.show()
 
 
+
+
 def war_movies_timeline(movies_df):
-    # First we get only the war movies and group them by year to get the total number of movies
+    # Filter for War movies and calculate counts by year
     war_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'War' in x if isinstance(x, list) else False)]
     war_movie_count_by_year = war_movies_df.groupby('release_year').size()
     total_movies_by_year = movies_df.groupby('release_year').size()
 
-    # Then we calculate the percentage
+    # Calculate the percentage of War movies
     war_percentage_by_year = (war_movie_count_by_year / total_movies_by_year) * 100
 
-    fig, ax1 = plt.subplots(figsize=(10, 5))
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='darkred', label='War Movies')
-    ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / War Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    # Create the plot
+    fig, ax1 = plt.subplots(figsize=(12, 6))
 
+    # Total movies and War movies
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies', linewidth=2)
+    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='#f8c03f', label='War Movies', linewidth=2)
+
+    # Set the primary axis labels and colors
+    ax1.set_xlabel('Year', fontsize=12)
+    ax1.set_ylabel('Total Number of Movies / War Movies', color='#f0390f', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
+    ax1.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
+
+    # Percentage of War movies on secondary axis
     ax2 = ax1.twinx()
-    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='green', label='% War Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of War Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='#1ecbe1', label='% War Movies', linestyle='--', linewidth=2)
+    ax2.set_ylabel('Percentage of War Movies', color='#1ecbe1', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    # Highlight WW1 and WW2 periods
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.5, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.5, label="WW2 Period (1939-1945)")
 
-    plt.title('Total Movies, War Movies, and Percentage of War Movies Released by Year')
-    ax1.grid(True)
-    ax1.legend(loc='upper left')
+    # Add a title and legends
+    plt.title('Total Movies, War Movies, and Percentage of War Movies Released by Year', fontsize=14, pad=15)
+    ax1.legend(loc='upper left', fontsize=10)
+    ax2.legend(loc='upper right', fontsize=10)
 
     plt.tight_layout()
     plt.show()
+
 
 
 def war_movies_info(movies_df):
@@ -271,35 +309,44 @@ def war_movies_info(movies_df):
 
 
 def crime_movies_timeline(movies_df):
-    #Used the same code as before but now for Crime movies
+    # Filter for Crime movies and calculate counts by year
     crime_movies_df = movies_df[movies_df['genres'].apply(lambda x: 'Crime' in x if isinstance(x, list) else False)]
-
     crime_movie_count_by_year = crime_movies_df.groupby('release_year').size()
     total_movies_by_year = movies_df.groupby('release_year').size()
     crime_percentage_by_year = (crime_movie_count_by_year / total_movies_by_year) * 100
 
+    # Create the plot
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(crime_movie_count_by_year.index, crime_movie_count_by_year.values, color='darkred', label='Crime Movies')
-    ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Crime Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    # Plot total movies and Crime movies
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies', linewidth=2)
+    ax1.plot(crime_movie_count_by_year.index, crime_movie_count_by_year.values, color='#f8c03f', label='Crime Movies', linewidth=2)
 
+    # Set the primary axis labels and colors
+    ax1.set_xlabel('Year', fontsize=12)
+    ax1.set_ylabel('Total Number of Movies / Crime Movies', color='#f0390f', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
+    ax1.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
+
+    # Create the secondary axis for percentage of Crime movies
     ax2 = ax1.twinx()
-    ax2.plot(crime_percentage_by_year.index, crime_percentage_by_year.values, color='green', label='% Crime Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Crime Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(crime_percentage_by_year.index, crime_percentage_by_year.values, color='#1ecbe1', label='% Crime Movies', linestyle='--', linewidth=2)
+    ax2.set_ylabel('Percentage of Crime Movies', color='#1ecbe1', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    # Highlight WW1 and WW2 periods
+    rect1 = ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.5, label="WW1 Period (1914-1918)")
+    rect2 = ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.5, label="WW2 Period (1939-1945)")
 
-    plt.title('Total Movies, Crime Movies, and Percentage of Crime Movies Released by Year')
-    ax1.grid(True)
+    # Add legends for both axes
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
+    # Add title and layout adjustments
+    plt.title('Total Movies, Crime Movies, and Percentage of Crime Movies Released by Year', fontsize=14, pad=15)
     plt.tight_layout()
     plt.show()
+
 
 
 def crime_movies_info(movies_df):
@@ -339,26 +386,32 @@ def mystery_movies_timeline(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(mystery_movie_count_by_year.index, mystery_movie_count_by_year.values, color='purple', label='Mystery Movies')
-    ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Mystery Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies', linewidth=2)
+    ax1.plot(mystery_movie_count_by_year.index, mystery_movie_count_by_year.values, color='#f8c03f', label='Mystery Movies', linewidth=2)
+
+    ax1.set_xlabel('Year', fontsize=12)
+    ax1.set_ylabel('Total Number of Movies / Mystery Movies', color='#f0390f', fontsize=12)
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
+    ax1.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
 
     ax2 = ax1.twinx()
-    ax2.plot(mystery_percentage_by_year.index, mystery_percentage_by_year.values, color='green', label='% Mystery Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Mystery Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(mystery_percentage_by_year.index, mystery_percentage_by_year.values, color='#1ecbe1', label='% Mystery Movies', linestyle='--', linewidth=2)
+    ax2.set_ylabel('Percentage of Mystery Movies', color='#1ecbe1', fontsize=12)
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
 
-    plt.title('Total Movies, Mystery Movies, and Percentage of Mystery Movies Released by Year')
-    ax1.grid(True)
+    rect1 = ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.5, label="WW1 Period (1914-1918)")
+    rect2 = ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.5, label="WW2 Period (1939-1945)")
+
+
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
+
+    plt.title('Total Movies, Mystery Movies, and Percentage of Mystery Movies Released by Year', fontsize=14, pad=15)
     plt.tight_layout()
     plt.show()
+
 
 
 def mystery_movies_info(movies_df):
@@ -404,24 +457,25 @@ def documentary_movies_timeline(movies_df):
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
     # We apply log function
-    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='blue', label='Log of Total Movies')
-    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='brown', label='Log of Documentary Movies')
+    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
+    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='green', label=f'Scaled % Documentary Movies', linestyle='--')
-    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='#1ecbe1', label=f'Scaled % Documentary Movies', linestyle='--')
+    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total Movies, Documentary Movies (Log Scale), and Scaled Percentage of Documentary Movies Released by Year (Starting from 1900)')
 
     ax1.grid(True)
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -465,23 +519,24 @@ def action_movies_timeline(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(action_movie_count_by_year.index, action_movie_count_by_year.values, color='darkred', label='Action Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies')
+    ax1.plot(action_movie_count_by_year.index, action_movie_count_by_year.values, color='#f8c03f', label='Action Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Action Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / Action Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(action_percentage_by_year.index, action_percentage_by_year.values, color='green', label='% Action Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Action Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(action_percentage_by_year.index, action_percentage_by_year.values, color='#1ecbe1', label='% Action Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of Action Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total Movies, Action Movies, and Percentage of Action Movies Released by Year')
     ax1.grid(True)
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -525,25 +580,26 @@ def adventure_movies_timeline(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(adventure_movie_count_by_year.index, adventure_movie_count_by_year.values, color='darkred', label='Adventure Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies')
+    ax1.plot(adventure_movie_count_by_year.index, adventure_movie_count_by_year.values, color='#f8c03f', label='Adventure Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Adventure Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / Adventure Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(adventure_percentage_by_year.index, adventure_percentage_by_year.values, color='green', label='% Adventure Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Adventure Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(adventure_percentage_by_year.index, adventure_percentage_by_year.values, color='#1ecbe1', label='% Adventure Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of Adventure Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total Movies, Adventure Movies, and Percentage of Adventure Movies Released by Year')
 
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
 
     plt.tight_layout()
@@ -589,24 +645,25 @@ def us_movies_war(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total US Movies')
-    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='darkred', label='US War Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total US Movies')
+    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='#f8c03f', label='US War Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / War Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / War Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='green', label='% US War Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of War Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='#1ecbe1', label='% US War Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of War Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total US Movies, US War Movies, and Percentage of US War Movies Released by Year')
 
     ax1.grid(True)
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -623,24 +680,25 @@ def uk_movies_war(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total UK Movies')
-    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='darkred', label='UK War Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total UK Movies')
+    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='#f8c03f', label='UK War Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / War Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / War Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='green', label='% UK War Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of War Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='#1ecbe1', label='% UK War Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of War Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total UK Movies, UK War Movies, and Percentage of UK War Movies Released by Year')
 
     ax1.grid(True)
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -658,25 +716,26 @@ def germany_movies_war(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Germany-related Movies')
-    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='darkred', label='Germany-related War Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Germany-related Movies')
+    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='#f8c03f', label='Germany-related War Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / War Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / War Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='green', label='% Germany-related War Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of War Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='#1ecbe1', label='% Germany-related War Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of War Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total Germany-related Movies, Germany-related War Movies, and Percentage of Germany-related War Movies Released by Year')
 
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -695,25 +754,26 @@ def indian_movies_war(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total India Movies')
-    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='darkred', label='India War Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total India Movies')
+    ax1.plot(war_movie_count_by_year.index, war_movie_count_by_year.values, color='#f8c03f', label='India War Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / War Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / War Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='green', label='% India War Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of War Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(war_percentage_by_year.index, war_percentage_by_year.values, color='#1ecbe1', label='% India War Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of War Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1914, 1918, color='lightblue', alpha=0.3, label="WW1 Period (1914-1918)")
-    ax1.axvspan(1939, 1945, color='lightblue', alpha=0.3, label="WW2 Period (1939-1945)")
+    ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
+    ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
     plt.title('Total India Movies, India War Movies, and Percentage of India War Movies Released by Year')
 
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -738,24 +798,25 @@ def science_fiction_movie(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(12, 4))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total Movies')
-    ax1.plot(sci_fi_movie_count_by_year.index, sci_fi_movie_count_by_year.values, color='darkred', label='Science Fiction Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies')
+    ax1.plot(sci_fi_movie_count_by_year.index, sci_fi_movie_count_by_year.values, color='#f8c03f', label='Science Fiction Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Sci-Fi Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / Sci-Fi Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='green', label='% Sci-Fi Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Sci-Fi Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='#1ecbe1', label='% Sci-Fi Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of Sci-Fi Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1957-1975)")
+    ax1.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1957-1975)")
 
     plt.title('Total Movies, Science Fiction Movies, and Percentage of Sci-Fi Movies Released by Year (1940-1990)')
 
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -778,24 +839,25 @@ def us_scinece_fiction(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(12, 4))
 
-    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='blue', label='Total US Movies')
-    ax1.plot(sci_fi_movie_count_by_year.index, sci_fi_movie_count_by_year.values, color='darkred', label='US Science Fiction Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total US Movies')
+    ax1.plot(sci_fi_movie_count_by_year.index, sci_fi_movie_count_by_year.values, color='#f8c03f', label='US Science Fiction Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Sci-Fi Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Total Number of Movies / Sci-Fi Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='green', label='% Sci-Fi Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Sci-Fi Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='#1ecbe1', label='% Sci-Fi Movies', linestyle='--')
+    ax2.set_ylabel('Percentage of Sci-Fi Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1957-1975)")
+    ax1.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1957-1975)")
 
     plt.title('Total US Movies, Science Fiction Movies, and Percentage of Sci-Fi Movies Released by Year (1940-1990)')
 
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -844,16 +906,16 @@ def documentary_movies_1980_2015(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='blue', label='Log of Total Movies')
-    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='brown', label='Log of Documentary Movies')
+    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
+    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='green', label=f'Scaled % Documentary Movies', linestyle='--')
-    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='#1ecbe1', label=f'Scaled % Documentary Movies', linestyle='--')
+    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
     ax1.axvspan(2001, 2001, color='red', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
 
@@ -862,6 +924,7 @@ def documentary_movies_1980_2015(movies_df):
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -879,16 +942,16 @@ def documentary_movies_1980_2015_us(movies_df):
 
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
-    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='blue', label='Log of Total Movies')
-    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='brown', label='Log of Documentary Movies')
+    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
+    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
-    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='green', label=f'Scaled % Documentary Movies', linestyle='--')
-    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='green')
-    ax2.tick_params(axis='y', labelcolor='green')
+    ax2.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='#1ecbe1', label=f'Scaled % Documentary Movies', linestyle='--')
+    ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='#1ecbe1')
+    ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
     ax1.axvspan(2001, 2001, color='red', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
 
@@ -897,6 +960,7 @@ def documentary_movies_1980_2015_us(movies_df):
     ax1.grid(True)
 
     ax1.legend(loc='upper left')
+    ax2.legend(loc='upper right')
 
     plt.tight_layout()
     plt.show()
@@ -1031,7 +1095,7 @@ def sci_fi_1943_1959(movies_df):
     plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1943 to 1959')
     plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label='Trendline (1943-1959)')
 
-    plt.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1957-1975)")
+    plt.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1957-1975)")
 
     plt.ylim(0, 20)
 
@@ -1074,7 +1138,7 @@ def sci_fi_1937_1975(movies_df):
     plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1947 to 1982')
     plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
 
-    plt.axvspan(1957, 1975, color='lightblue', alpha=0.3, label="Space Race Period (1947-1982)")
+    plt.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1947-1982)")
 
     plt.ylim(0, 20)
 
@@ -1117,7 +1181,7 @@ def documentary_1991_2006_linear(movies_df):
     plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1990 to 2009')
     plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label='Trendline (1990-2009)')
 
-    plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+    plt.axvline(x=2001, color='#bdbdbd', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
 
     plt.ylim(0, 20)
 
@@ -1160,7 +1224,7 @@ def documentary_1991_2006_polynomial(movies_df):
     plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1991 to 2006')
     plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
 
-    plt.axvline(x=2001, color='lightblue', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+    plt.axvline(x=2001, color='#bdbdbd', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
 
     plt.ylim(0, 20)
 
