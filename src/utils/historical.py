@@ -457,10 +457,11 @@ def documentary_movies_timeline(movies_df):
     fig, ax1 = plt.subplots(figsize=(10, 5))
 
     # We apply log function
-    ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
-    ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
+    ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Log of Total Movies')
+    ax1.plot(documentary_movie_count_by_year.index, documentary_movie_count_by_year.values, color='#f8c03f', label='Log of Documentary Movies')
+    plt.yscale('log')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.set_ylabel('Total Number of Movies (Log Scale) / Documentary Movies (Log Scale)', color='#f0390f', fontsize=7)
     ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
@@ -471,7 +472,7 @@ def documentary_movies_timeline(movies_df):
     ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
     ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
 
-    plt.title('Total Movies, Documentary Movies (Log Scale), and Scaled Percentage of Documentary Movies Released by Year (Starting from 1900)')
+    plt.title('Total Movies, Documentary Movies, and Scaled Percentage of Documentary Movies Released by Year (Starting from 1900)')
 
     ax1.grid(True)
     ax1.legend(loc='upper left')
@@ -583,13 +584,15 @@ def adventure_movies_timeline(movies_df):
     ax1.plot(total_movies_by_year.index, total_movies_by_year.values, color='#f0390f', label='Total Movies')
     ax1.plot(adventure_movie_count_by_year.index, adventure_movie_count_by_year.values, color='#f8c03f', label='Adventure Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Total Number of Movies / Adventure Movies', color='#f0390f')
+    plt.yscale('log')
+    ax1.set_ylabel('Total Number of Movies (Log Scale) / Adventure Movies (Log Scale)', color='#f0390f')
     ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
     ax2.plot(adventure_percentage_by_year.index, adventure_percentage_by_year.values, color='#1ecbe1', label='% Adventure Movies', linestyle='--')
-    ax2.set_ylabel('Percentage of Adventure Movies', color='#1ecbe1')
+    ax2.set_ylabel('Percentage of Adventure Movies (Log Scale)', color='#1ecbe1')
     ax2.tick_params(axis='y', labelcolor='#1ecbe1')
+    ax2.set_yscale('log')
 
     ax1.axvspan(1914, 1918, color='#bdbdbd', alpha=0.3, label="WW1 Period (1914-1918)")
     ax1.axvspan(1939, 1945, color='#bdbdbd', alpha=0.3, label="WW2 Period (1939-1945)")
@@ -881,7 +884,7 @@ def soviet_union_movies_1930_1980(movies_df):
 
     fig, ax = plt.subplots(figsize=(12, 6))
 
-    ax.plot(movie_count_by_year.index, movie_count_by_year.values, color='blue', label='Total Movies')
+    ax.plot(movie_count_by_year.index, movie_count_by_year.values, color='#1ecbe1', label='Total Movies')
 
     ax.set_title('Total Movies Released by Year (1930-1980) from Soviet Union and Affiliates')
     ax.set_xlabel('Year')
@@ -909,7 +912,7 @@ def documentary_movies_1980_2015(movies_df):
     ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
     ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.set_ylabel('Total Number of Movies (Log Scale) / Log of Documentary Movies (Log Scale)', color='#f0390f', fontsize=7)
     ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
@@ -917,7 +920,7 @@ def documentary_movies_1980_2015(movies_df):
     ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='#1ecbe1')
     ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(2001, 2001, color='red', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
+    ax1.axvspan(2001, 2001, color='#bdbdbd', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
 
     plt.title('Total Movies, Documentary Movies (Log Scale), and Scaled Percentage of Documentary Movies Released by Year (1980-2015)')
 
@@ -945,7 +948,7 @@ def documentary_movies_1980_2015_us(movies_df):
     ax1.plot(total_movies_by_year.index, np.log1p(total_movies_by_year.values), color='#f0390f', label='Log of Total Movies')
     ax1.plot(documentary_movie_count_by_year.index, np.log1p(documentary_movie_count_by_year.values), color='#f8c03f', label='Log of Documentary Movies')
     ax1.set_xlabel('Year')
-    ax1.set_ylabel('Log of Total Number of Movies / Log of Documentary Movies', color='#f0390f')
+    ax1.set_ylabel('Total Number of Movies  (Log Scale) / Log of Documentary Movies (Log Scale)', color='#f0390f', fontsize=7)
     ax1.tick_params(axis='y', labelcolor='#f0390f')
 
     ax2 = ax1.twinx()
@@ -953,7 +956,7 @@ def documentary_movies_1980_2015_us(movies_df):
     ax2.set_ylabel('Scaled Percentage of Documentary Movies', color='#1ecbe1')
     ax2.tick_params(axis='y', labelcolor='#1ecbe1')
 
-    ax1.axvspan(2001, 2001, color='red', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
+    ax1.axvspan(2001, 2001, color='#bdbdbd', alpha=0.3, label="9/11 Period (2001)", linewidth=8)  # Thicker line for 9/11
 
     plt.title('Total Movies, Documentary Movies (Log Scale), and Scaled Percentage of Documentary Movies Released by Year (1980-2015) from United States')
 
@@ -1022,12 +1025,12 @@ def ww2_correlation_uk(movies_df):
     # Then we create an indicator to see if movie occurs during WW2 1 for movies that occured and if not the value is 0
     start_year, end_year = 1939, 1945
     uk_movies_df.loc[:, 'WWII Indicator'] = uk_movies_df['release_year'].apply(lambda x: 1 if start_year <= x <= end_year else 0)
-    wwii_indicator_by_year_us = uk_movies_df.groupby('release_year')['WWII Indicator'].max()
+    wwii_indicator_by_year_uk = uk_movies_df.groupby('release_year')['WWII Indicator'].max()
 
     #Finaly we calculate the correlation between the percentage of war movies and the years of war from the UK
-    correlation_us = war_percentage_by_year_uk.corr(wwii_indicator_by_year_us)
+    correlation_uk = war_percentage_by_year_uk.corr(wwii_indicator_by_year_uk)
 
-    print("Correlation between WWII period and percentage of War movies produced in the United Kigdom:", correlation_us)
+    print("Correlation between WWII period and percentage of War movies produced in the United Kigdom:", correlation_uk)
 
 
 def ww2_correlation_mystery(movies_df):
@@ -1092,10 +1095,10 @@ def sci_fi_1943_1959(movies_df):
 
     plt.figure(figsize=(10, 6))
     plt.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='gray', label='Percentage of Sci-Fi Movies (All Years)')
-    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1943 to 1959')
-    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label='Trendline (1943-1959)')
+    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='#1ecbe1', label='Sci-Fi Movies % from 1943 to 1959')
+    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='#f0390f', linestyle='--', label='Trendline (1943-1959)')
 
-    plt.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1957-1975)")
+    plt.axvspan(1957, 1975, color='#f8c03f', alpha=0.3, label="Space Race Period (1957-1975)")
 
     plt.ylim(0, 20)
 
@@ -1135,10 +1138,10 @@ def sci_fi_1937_1975(movies_df):
 
     plt.figure(figsize=(10, 6))
     plt.plot(sci_fi_percentage_by_year.index, sci_fi_percentage_by_year.values, color='gray', label='Percentage of Sci-Fi Movies (All Years)')
-    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='blue', label='Sci-Fi Movies % from 1947 to 1982')
-    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
+    plt.plot(sci_fi_percentage_pre_space_race.index, sci_fi_percentage_pre_space_race.values, color='#1ecbe1', label='Sci-Fi Movies % from 1947 to 1982')
+    plt.plot(sci_fi_percentage_pre_space_race.index, trendline, color='#f0390f', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
 
-    plt.axvspan(1957, 1975, color='#bdbdbd', alpha=0.3, label="Space Race Period (1947-1982)")
+    plt.axvspan(1957, 1975, color='#f8c03f', alpha=0.3, label="Space Race Period (1947-1982)")
 
     plt.ylim(0, 20)
 
@@ -1178,10 +1181,10 @@ def documentary_1991_2006_linear(movies_df):
 
     plt.figure(figsize=(10, 6))
     plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
-    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1990 to 2009')
-    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label='Trendline (1990-2009)')
+    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='#1ecbe1', label='Documentary Movies % from 1990 to 2009')
+    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='#f0390f', linestyle='--', label='Trendline (1990-2009)')
 
-    plt.axvline(x=2001, color='#bdbdbd', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+    plt.axvline(x=2001, color='#f8c03f', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
 
     plt.ylim(0, 20)
 
@@ -1221,10 +1224,10 @@ def documentary_1991_2006_polynomial(movies_df):
 
     plt.figure(figsize=(10, 6))
     plt.plot(documentary_percentage_by_year.index, documentary_percentage_by_year.values, color='gray', label='Percentage of Documentary Movies (All Years)')
-    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='blue', label='Documentary Movies % from 1991 to 2006')
-    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='red', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
+    plt.plot(documentary_percentage_pre_post_911.index, documentary_percentage_pre_post_911.values, color='#1ecbe1', label='Documentary Movies % from 1991 to 2006')
+    plt.plot(documentary_percentage_pre_post_911.index, trendline, color='#f0390f', linestyle='--', label=f'Polynomial Trendline (Degree {degree})')
 
-    plt.axvline(x=2001, color='#bdbdbd', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
+    plt.axvline(x=2001, color='#f8c03f', alpha=0.5, linestyle='-', linewidth=6, label="9/11 (2001)")
 
     plt.ylim(0, 20)
 
