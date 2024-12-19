@@ -78,21 +78,19 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 
 ## **Methods**
 
-1. **Data Collection & Cleaning**: We will use the *CMU* dataset combined with the *TMDB Movies Dataset 2024* dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
+1. **Data Collection & Cleaning**: We use the *CMU* dataset combined with the *TMDB Movies Dataset 2024* dataset to enhance our analysis. This step involves standardizing titles, genres, and dates and addressing missing values, particularly in revenue. This integration builds a reliable database that captures both historical context and movie-specific details.
 
-2. **Exploratory Data Analysis (EDA)**: Conduct initial EDA to visualize genre distribution, and popularity across historical periods and seasons. Using bar charts and time series, we’ll assess patterns and variations in popularity and revenue, setting the foundation for deeper analysis.
+2. **Exploratory Data Analysis (EDA)**: Conduct initial EDA to visualize genre distribution, and popularity across historical periods and seasons. Using bar charts and histograms, we assess patterns and variations in popularity, release year and revenue, setting the foundation for deeper analysis.
 
-3. **Seasonal Trend Analysis**: We’ll apply statistical tests (e.g., chi-square, ANOVA) to examine genre popularity by season, testing hypotheses on genre-season associations such as horror’s peak in October and family movies’ rise in December.
+3. **Historical Impact Analysis**: We conduct regression analysis to assess the impact of major historical events on genre shifts and thematic changes. We investigate genre transformations in response to events like wars, economic crises, and socio-political shifts.
 
-4. **Historical Impact Analysis**: We’ll conduct regression analysis to assess the impact of major historical events on genre shifts and thematic changes. We’ll investigate genre transformations in response to events like wars, economic crises, and socio-political shifts.
+4. **Sentiment Analysis**: Using NLP, we analyze plot summaries to capture sentiment and thematic tones through time. This will add depth to our analysis of genre and theme changes across historical events.
 
-5. **Revenue Analysis Over Time**: Using time series analysis, we’ll track revenue patterns by season and historical context, identifying financially significant periods. This will reveal seasonal and event-based revenue peaks.
+5. **Seasonal Trend Analysis**: We apply statistical tests, like correlation and regression, to examine genre popularity by season, testing hypotheses on genre-season associations such as horror’s peak in October and family movies’ rise in December.
 
-6. **Clustering for Genre and Country Insights**: We’ll apply clustering algorithms, like K-means, to identify patterns in genre preferences based on release season and country, aiming to uncover optimal release strategies based on cultural and regional differences.
+6. **Revenue Analysis Over Seasons**: Using time series analysis, we track revenue patterns by season, identifying financially significant periods. This reveals seasonal and event-based revenue peaks.
 
-7. **Sentiment Analysis**: Using NLP, we’ll analyze plot summaries to capture sentiment and thematic tones. This will add depth to our analysis of genre and theme changes across historical events.
-
-8. **Data Visualization**: We’ll create interactive visualizations to illustrate genre-season relationships, revenue trends, and historical impact on cinema, using heatmaps and bubble charts to communicate our findings clearly.
+7. **Data Visualization**: We create interactive visualizations to illustrate genre-season relationships, revenue trends, and historical impact on cinema, using heatmaps, bar charts and plotlines to communicate our findings clearly.
 
 
 ## **Proposed Timeline**
@@ -103,26 +101,26 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 2. **Step 2 (24.10.2024 - 31.10.2024)**:  
    - Data Exploration: Conduct exploratory data analysis (EDA), create initial visualizations, and identify trends.
 
-3. **Step 3 (24.10.2024 - 01.11.2024)**:  
-   - Seasonal Trends Analysis: Analyze genre popularity by season using statistical methods.
-
-4. **Step 4 (24.10.2024 - 13.11.2024)**:  
+3. **Step 4 (24.10.2024 - 13.11.2024)**:  
    - Historical Impact Analysis: Explore genre shifts due to historical events and perform regression analysis to assess impact.
 
+4. **Step 3 (24.10.2024 - 01.11.2024)**:  
+   - Seasonal Trends Analysis: Analyze genre popularity by season using statistical methods.
+
 5. **Step 5 (24.10.2024 - 13.11.2024)**:  
-   - Revenue Analysis: Apply time series analysis to examine revenue patterns over time and across seasons.
+   - Revenue Analysis: Apply regression and correlation analysis to examine revenue patterns over time and across seasons.
 
-6. **Step 6 (02.11.2024 - 20.11.2024)**:  
-   - Clustering Analysis: Conduct clustering for genre and regional preferences to identify patterns in audience demographics.
-
-7. **Step 7 (10.11.2024 - 01.12.2024)**:  
+6.  **Step 6 (2.11.2024 - 01.12.2024)**:  
    - Sentiment Analysis: Perform sentiment analysis on plot summaries to assess emotional tone during historical events.
 
+7. **Step 7 (2.11.2024 - 01.12.2024)**:  
+   - Repository Organization: Clean and structure the GitHub repository, ensuring the results.ipynb file is complete, well-organized, and fully documented.
+
 8. **Step 8 (15.11.2024 - 15.12.2024)**:  
-   - GitHub Pages Setup: Develop a GitHub Pages site for the project to display findings and visualizations interactively.
+   - GitHub Pages Setup: Develop a GitHub Pages site for the project to display findings and visualizations interactively, creating a compelling data story to engage the audience.
 
 9. **Step 9 (15.11.2024- 18.12.2024)**:  
-   - Final Report and Submission: Compile findings into a comprehensive report and finalize all project documentation for submission.complete the report.
+   - Final Report and Submission: Update ReadMe with page URL and final information.
 
 ![Proposed Timeline](src/media/timeline_chart.png)
 
@@ -139,18 +137,18 @@ Alongside CMU, we will use the TMDB Movies Dataset 2024 from Kaggle, which provi
 
 - **Step 5**: Marija & Milica
 
-- **Step 6**:Eugenio & Andrea
+- **Step 6**: Eugenio & Daniela
 
-- **Step 7**: Daniela, Eugenio & Marija
+- **Step 7**: Milica, Andrea & Marija
 
-- **Step 8**:  Milica & Andrea
+- **Step 8**:  Marija & Eugenio
 
-- **Step 9**: Marija, Andrea & Daniela
+- **Step 9**: Milica, Andrea & Daniela
 
-## **Questions for TAs**  
-- Do you have recommendations on tools for visualizing seasonal and historical trends effectively?  
-- For sentiment analysis on plot summaries, would you recommend any particular NLP techniques or libraries, given our dataset size and focus on historical events?
-- Are there any best practices for setting up a GitHub Pages site, especially when embedding interactive visualizations?
-- Do you have any advice on how to frame our conclusions to better highlight how historical and seasonal factors shape the movie industry, without overextending the interpretation of our data?
----
+## **Group Contributions**  
+- Milica: Analysis and graphs of the impact of holidays in movie genres, data preprocessing incorporating TMDB Movies Dataset
+- Daniela: Sentiment analysis of plot summaries through time, EDA graphs
+- Andrea: Impact of the World Wars in movies for historical analysis, EDA
+- Eugenio: Building the webpage, impact of 9/11 and space race for historical analysis
+- Marija: Writing up the data story, seasonal patterns analysis, data preprocessing incorporating TMDB Movies Dataset
 
