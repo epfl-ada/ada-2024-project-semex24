@@ -1,5 +1,9 @@
 # **Cinema Through Time: How Seasons and History Shape the Movies We Watch**
 
+## **Data Story**
+- Website URL: https://eugeniotrevino02.github.io/index.html
+- Website Github Repository: https://github.com/EugenioTrevino02/EugenioTrevino02.github.io
+
 ## **Abstract**
 Our project explores how significant historical events and seasonal trends influence the films we watch, reflecting society’s evolving narratives. By examining the impact of events like World Wars, economic recessions, and modern-day challenges, we aim to uncover patterns in how cinema adapts to cultural shifts. This study analyzes genre popularity across seasons, such as horror in October and family films in December, to determine whether specific genres align with particular times of the year. Our goal is to reveal how historical context and seasonal preferences shape the evolution of cinema and connect audiences to stories that resonate with societal highs and lows.
 
