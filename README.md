@@ -22,22 +22,22 @@ ADA-2024-PROJECT-SEMEX24/
 ├── data/                         <- Project data files
 │   ├── character.metadata.tsv     <- Character metadata
 │   ├── movie.metadata.tsv         <- Movie metadata
-│   ├── movies_dataset.tsv         <- Dataset for movies
+│   ├── movies_dataset.tsv         <- Dataset for movies preprocessed
 │   └── plot_summaries.txt         <- Plot summaries for analysis
 │
 ├── src/                           <- Source code
 │   ├── data/                      <- Data loading and processing
-│   │   └── data_loader.py         <- Script to load and preprocess data
+│   │   └── data_loader.py         <- Script to load and process data
 │   ├── media/                     <- Media files for the project
 │   │   └── timeline_chart.png     <- Timeline chart image
-│   ├── scripts/                   <- Jupyter Notebooks for various analyses
+│   ├── scripts/                   <- Jupyter Notebooks for various analysis
 │   │   ├── data_cleaning.ipynb    <- Notebook for cleaning data
-│   │   ├── Main_analysis.ipynb    <- Main analysis notebook
-│   │   └── Sentimental Analysis.ipynb <- Sentiment analysis notebook
-│   └── utils/                     <- Utility scripts for analysis
-│       ├── EDA.py                 <- Exploratory Data Analysis functions
+│   │   ├── combined_analysis.ipynb    <- Combined analysis notebook with seasonal and historical analysis
+│   │   └── sentimental_analysis.ipynb <- Sentiment analysis notebook
+│   └── utils/                     <- Utility scripts for functions
+│       ├── EDA.py                 <- Functions for Exploratory Data Analysis
 │       ├── historical.py          <- Functions for historical analysis
-│       ├── sentimental_analysis.py<- Sentiment analysis functions
+│       ├── sentimental_analysis.py<- Functions fo sentiment analysis
 │       └── sesonal.py             <- Functions for seasonal analysis
 │
 ├── .gitignore                     <- List of files ignored by git
